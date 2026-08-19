@@ -1,0 +1,103 @@
+"use client";
+
+import { Mail, MapPin, Phone } from "lucide-react";
+
+import { company, homeSections } from "@/content/company";
+import { ContactForm } from "@/components/forms/ContactForm";
+import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+
+type ContactSectionProps = {
+  showHeader?: boolean;
+};
+
+export function ContactSection({ showHeader = true }: ContactSectionProps) {
+  const mapQuery = encodeURIComponent(company.address);
+  const mapSrc = `https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+
+  return (
+    <section id="contact" className="bg-white py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        {showHeader ? (
+          <RevealOnScroll>
+            <SectionHeader
+              eyebrow="Contact"
+              title="Get in Touch"
+              description={homeSections.contactIntro}
+            />
+          </RevealOnScroll>
+        ) : null}
+
+        <RevealOnScroll
+          className={
+            showHeader
+              ? "mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16"
+              : "grid gap-10 lg:grid-cols-2 lg:gap-16"
+          }
+        >
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <MapPin className="mt-1 h-5 w-5 shrink-0 text-cyan" aria-hidden />
+              <div>
+                <p className="font-heading text-sm font-semibold text-navy">
+                  Address
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-text/70">
+                  {company.address}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <Phone className="mt-1 h-5 w-5 shrink-0 text-cyan" aria-hidden />
+              <div>
+                <p className="font-heading text-sm font-semibold text-navy">
+                  Phone
+                </p>
+                <ul className="mt-1 space-y-1">
+                  {company.phones.map((phone) => (
+                    <li key={phone}>
+                      <a
+                        href={`tel:${phone.replace(/\s/g, "")}`}
+                        className="text-sm text-text/70 hover:text-ocean-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2"
+                      >
+                        {phone}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <Mail className="mt-1 h-5 w-5 shrink-0 text-cyan" aria-hidden />
+              <div>
+                <p className="font-heading text-sm font-semibold text-navy">
+                  Email
+                </p>
+                <a
+                  href={`mailto:${company.email}`}
+                  className="mt-1 block text-sm text-text/70 hover:text-ocean-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2"
+                >
+                  {company.email}
+                </a>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-lg border border-border">
+              <iframe
+                title="SeaCraft office location"
+                src={mapSrc}
+                className="h-64 w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+
+          <ContactForm />
+        </RevealOnScroll>
+      </div>
+    </section>
+  );
+}
