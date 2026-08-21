@@ -25,6 +25,7 @@ export default function ContactPage() {
         title={pageIntros.contact.title}
         description={pageIntros.contact.description}
         breadcrumbs={[...breadcrumbs]}
+        brandAligned
       />
       <ContactSection showHeader={false} />
     </>

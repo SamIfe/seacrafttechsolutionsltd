@@ -108,7 +108,7 @@ export const termsOfUse = {
     {
       title: "Intellectual Property",
       paragraphs: [
-        "Unless otherwise stated, content on this website — including text, branding, layout, and graphics — is owned by or licensed to SeaCraft Technology Solutions Ltd and is protected by applicable intellectual property laws.",
+        "Unless otherwise stated, content on this website - including text, branding, layout, and graphics - is owned by or licensed to SeaCraft Technology Solutions Ltd and is protected by applicable intellectual property laws.",
         "You may view and print pages for personal, non-commercial reference. Reproduction, distribution, or commercial use requires prior written consent.",
       ],
     },

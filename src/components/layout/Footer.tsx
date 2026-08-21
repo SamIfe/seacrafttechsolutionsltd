@@ -6,9 +6,20 @@ import { company } from "@/content/company";
 import { certifications } from "@/content/hseq";
 import { Logo } from "@/components/layout/Logo";
 import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
-import { footerNav, siteConfig } from "@/lib/navigation";
+import { footerNav, isSectionLive, siteConfig } from "@/lib/navigation";
 
 function FooterLink({ href, label }: { href: string; label: string }) {
+  if (!isSectionLive(href) && href !== "/privacy" && href !== "/terms") {
+    return (
+      <span
+        className="cursor-not-allowed text-sm text-white/30"
+        aria-disabled="true"
+      >
+        {label}
+      </span>
+    );
+  }
+
   return (
     <Link
       href={href}

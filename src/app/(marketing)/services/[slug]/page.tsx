@@ -66,6 +66,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         title={service.title}
         description={service.shortDescription}
         breadcrumbs={[...breadcrumbs]}
+        brandAligned
       />
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <ServiceDetailSections service={service} />

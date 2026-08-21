@@ -13,7 +13,7 @@ import {
 import { HeroMotion } from "@/components/sections/HeroMotion";
 import { Button } from "@/components/ui/button";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { cn } from "@/lib/utils";
+import { brandCtaClassName, cn } from "@/lib/utils";
 
 /** Two image cuts per text block: 3s × 2 = 6s text dwell. */
 const IMAGE_MS = 3000;
@@ -197,7 +197,7 @@ export function Hero() {
               {slide.cta ? (
                 <Button
                   asChild
-                  className="mt-8 bg-[#F5BF23] text-[#172168] hover:bg-[#e8b31f] hover:text-[#172168]"
+                  className={cn("mt-8", brandCtaClassName)}
                 >
                   <Link href={slide.cta.href}>
                     {slide.cta.label}

@@ -12,6 +12,8 @@ type PageHeroProps = {
   description?: string;
   breadcrumbs?: { label: string; href?: string }[];
   className?: string;
+  /** Official navy #172168 + gold #F5BF23 treatment (rolled out per page). */
+  brandAligned?: boolean;
 };
 
 export function PageHero({
@@ -19,6 +21,7 @@ export function PageHero({
   description,
   breadcrumbs,
   className,
+  brandAligned = false,
 }: PageHeroProps) {
   const reducedMotion = useReducedMotion();
 
@@ -32,7 +35,11 @@ export function PageHero({
               {crumb.href ? (
                 <Link
                   href={crumb.href}
-                  className="rounded-sm hover:text-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+                  className={
+                    brandAligned
+                      ? "rounded-sm hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]"
+                      : "rounded-sm hover:text-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+                  }
                 >
                   {crumb.label}
                 </Link>
@@ -57,7 +64,10 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "border-b border-border bg-gradient-to-br from-navy via-ocean-blue to-navy text-white",
+        "border-b border-border text-white",
+        brandAligned
+          ? "bg-[#172168]"
+          : "bg-gradient-to-br from-navy via-ocean-blue to-navy",
         className,
       )}
     >
@@ -77,7 +87,13 @@ export function PageHero({
           </motion.div>
         )}
       </div>
-      <div className="h-1 bg-gradient-to-r from-teal via-coral to-gold" />
+      <div
+        className={
+          brandAligned
+            ? "h-1 bg-[#F5BF23]"
+            : "h-1 bg-gradient-to-r from-teal via-coral to-gold"
+        }
+      />
     </section>
   );
 }

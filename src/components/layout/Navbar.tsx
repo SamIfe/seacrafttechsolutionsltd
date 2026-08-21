@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 
-import { mainNav } from "@/lib/navigation";
-import { cn } from "@/lib/utils";
+import { isSectionLive, mainNav } from "@/lib/navigation";
+import { brandCtaClassName, cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Logo } from "@/components/layout/Logo";
 import { MegaMenu } from "@/components/layout/MegaMenu";
@@ -70,9 +70,9 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex shrink-0 items-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]"
+          className="inline-flex shrink-0 items-center rounded-xl bg-[#F5BF23] px-3.5 py-2.5 md:px-4 md:py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]"
         >
-          <Logo height={36} />
+          <Logo src="/logo/header-logo.svg" height={32} />
         </Link>
 
         <nav
@@ -86,11 +86,25 @@ export function Navbar() {
         >
           <ul className="flex items-center gap-1">
             {mainNav.map((item) => {
+              const live = isSectionLive(item.href);
               const isActive =
                 item.href === "/"
                   ? pathname === "/"
                   : pathname.startsWith(item.href);
-              const hasChildren = Boolean(item.children?.length);
+              const hasChildren = live && Boolean(item.children?.length);
+
+              if (!live) {
+                return (
+                  <li key={item.href}>
+                    <span
+                      className="cursor-not-allowed rounded-md px-3 py-2 text-sm font-medium text-white/35"
+                      aria-disabled="true"
+                    >
+                      {item.label}
+                    </span>
+                  </li>
+                );
+              }
 
               if (hasChildren) {
                 return (
@@ -143,11 +157,21 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <MagneticButton className="hidden lg:inline-flex">
-            <Button asChild className="bg-[#F5BF23] text-[#172168] hover:bg-[#e8b31f] hover:text-[#172168]">
-              <Link href="/contact">Contact</Link>
+          {isSectionLive("/contact") ? (
+            <MagneticButton className="hidden lg:inline-flex">
+              <Button asChild className={brandCtaClassName}>
+                <Link href="/contact">Contact Us</Link>
+              </Button>
+            </MagneticButton>
+          ) : (
+            <Button
+              type="button"
+              disabled
+              className={`${brandCtaClassName} hidden cursor-not-allowed lg:inline-flex`}
+            >
+              Contact Us
             </Button>
-          </MagneticButton>
+          )}
 
           <button
             type="button"
@@ -162,7 +186,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {servicesNavItem?.children ? (
+      {isSectionLive("/services") && servicesNavItem?.children ? (
         <MegaMenu
           id="services-mega-menu"
           items={servicesNavItem.children}

@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
 
-import { allRoutes } from "@/lib/navigation";
+import { allRoutes, isSectionLive } from "@/lib/navigation";
 import { absoluteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const publicRoutes = allRoutes.filter(
+    (path) =>
+      isSectionLive(path) || path === "/privacy" || path === "/terms",
+  );
 
-  return allRoutes.map((path) => ({
+  return publicRoutes.map((path) => ({
     url: absoluteUrl(path),
     lastModified,
     changeFrequency: path === "/" ? "weekly" : "monthly",

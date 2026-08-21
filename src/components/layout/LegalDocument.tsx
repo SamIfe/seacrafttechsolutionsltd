@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { company } from "@/content/company";
 import type { LegalSection } from "@/content/legal";
+import { Button } from "@/components/ui/button";
+import { brandCtaClassName } from "@/lib/utils";
 
 type LegalDocumentProps = {
   title: string;
@@ -73,12 +75,9 @@ export function LegalDocument({
         </p>
         <p className="mt-2 text-sm text-text/60">{company.address}</p>
         <p className="mt-4">
-          <Link
-            href="/contact"
-            className="text-sm font-medium text-ocean-blue hover:text-ocean-blue/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2"
-          >
-            Contact us →
-          </Link>
+          <Button asChild className={brandCtaClassName}>
+            <Link href="/contact">Contact Us</Link>
+          </Button>
         </p>
       </footer>
     </article>

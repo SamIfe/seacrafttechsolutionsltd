@@ -11,6 +11,14 @@ type ContactSectionProps = {
   showHeader?: boolean;
 };
 
+const labelClassName =
+  "font-heading text-sm font-semibold uppercase tracking-wider text-[#F5BF23]";
+
+const bodyClassName = "mt-1 text-sm leading-relaxed text-[#1B1F23]";
+
+const linkClassName =
+  "text-sm text-[#1B1F23] hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2";
+
 export function ContactSection({ showHeader = true }: ContactSectionProps) {
   const mapQuery = encodeURIComponent(company.address);
   const mapSrc = `https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
@@ -24,6 +32,9 @@ export function ContactSection({ showHeader = true }: ContactSectionProps) {
               eyebrow="Contact"
               title="Get in Touch"
               description={homeSections.contactIntro}
+              eyebrowClassName="text-[#F5BF23]"
+              titleClassName="text-[#172168]"
+              descriptionClassName="text-[#1B1F23]"
             />
           </RevealOnScroll>
         ) : null}
@@ -37,29 +48,31 @@ export function ContactSection({ showHeader = true }: ContactSectionProps) {
         >
           <div className="space-y-6">
             <div className="flex gap-4">
-              <MapPin className="mt-1 h-5 w-5 shrink-0 text-cyan" aria-hidden />
+              <MapPin
+                className="mt-1 h-5 w-5 shrink-0 text-[#F5BF23] [filter:drop-shadow(0_0_0.75px_#172168)]"
+                strokeWidth={2.5}
+                aria-hidden
+              />
               <div>
-                <p className="font-heading text-sm font-semibold text-navy">
-                  Address
-                </p>
-                <p className="mt-1 text-sm leading-relaxed text-text/70">
-                  {company.address}
-                </p>
+                <p className={labelClassName}>Address</p>
+                <p className={bodyClassName}>{company.address}</p>
               </div>
             </div>
 
             <div className="flex gap-4">
-              <Phone className="mt-1 h-5 w-5 shrink-0 text-cyan" aria-hidden />
+              <Phone
+                className="mt-1 h-5 w-5 shrink-0 text-[#F5BF23] [filter:drop-shadow(0_0_0.75px_#172168)]"
+                strokeWidth={2.5}
+                aria-hidden
+              />
               <div>
-                <p className="font-heading text-sm font-semibold text-navy">
-                  Phone
-                </p>
+                <p className={labelClassName}>Phone</p>
                 <ul className="mt-1 space-y-1">
                   {company.phones.map((phone) => (
                     <li key={phone}>
                       <a
                         href={`tel:${phone.replace(/\s/g, "")}`}
-                        className="text-sm text-text/70 hover:text-ocean-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2"
+                        className={linkClassName}
                       >
                         {phone}
                       </a>
@@ -70,21 +83,20 @@ export function ContactSection({ showHeader = true }: ContactSectionProps) {
             </div>
 
             <div className="flex gap-4">
-              <Mail className="mt-1 h-5 w-5 shrink-0 text-cyan" aria-hidden />
+              <Mail
+                className="mt-1 h-5 w-5 shrink-0 text-[#F5BF23] [filter:drop-shadow(0_0_0.75px_#172168)]"
+                strokeWidth={2.5}
+                aria-hidden
+              />
               <div>
-                <p className="font-heading text-sm font-semibold text-navy">
-                  Email
-                </p>
-                <a
-                  href={`mailto:${company.email}`}
-                  className="mt-1 block text-sm text-text/70 hover:text-ocean-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2"
-                >
+                <p className={labelClassName}>Email</p>
+                <a href={`mailto:${company.email}`} className={`mt-1 block ${linkClassName}`}>
                   {company.email}
                 </a>
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-lg border border-border">
+            <div className="overflow-hidden rounded-lg border border-[#D1D5DB]">
               <iframe
                 title="SeaCraft office location"
                 src={mapSrc}

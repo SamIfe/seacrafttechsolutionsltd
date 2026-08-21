@@ -5,6 +5,7 @@ import { ArrowRight, Home } from "lucide-react";
 import { company } from "@/content/company";
 import { notFoundPage } from "@/content/legal";
 import { Button } from "@/components/ui/button";
+import { brandCtaClassName } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: notFoundPage.title,
@@ -52,7 +53,7 @@ export default function NotFound() {
                 {notFoundPage.primaryAction.label}
               </Link>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild className={brandCtaClassName}>
               <Link href={notFoundPage.secondaryAction.href}>
                 {notFoundPage.secondaryAction.label}
                 <ArrowRight className="h-4 w-4" aria-hidden />

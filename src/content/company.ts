@@ -22,7 +22,7 @@ export const company: Company = {
     description:
       "SeaCraft Technology Solutions Ltd serves as a local representative of Total Marine Technology (TMT) in West Africa, supporting the execution of ROV-related operations and offshore projects.",
     displayNote:
-      "Partnership credit — text only. TMT logo not displayed without licensed asset.",
+      "Partnership credit - text only. TMT logo not displayed without licensed asset.",
   },
 };
 
@@ -119,7 +119,7 @@ export const homeCta = {
 export const homeSections = {
   heroEyebrow: "Nigerian Indigenous Subsea & Offshore Services",
   heroTagline:
-    "Nigerian indigenous subsea, ROV, marine, and offshore services — delivering technology-driven solutions to the offshore energy sector.",
+    "Nigerian indigenous subsea, ROV, marine, and offshore services - delivering technology-driven solutions to the offshore energy sector.",
   partnershipCredit:
     "Local representative of Total Marine Technology (TMT) in West Africa, supporting ROV-related operations and offshore projects.",
   servicesIntro:
@@ -131,7 +131,7 @@ export const homeSections = {
   hseqIntro:
     "Committed to zero harm, regulatory compliance, and sustainable Nigerian content development across all operations.",
   processIntro:
-    "A structured approach to offshore service delivery — generic process framework applicable across project types.",
+    "A structured approach to offshore service delivery - generic process framework applicable across project types.",
   testimonialsIntro:
     "Client feedback will be published here as it becomes available.",
   contactIntro:
@@ -140,6 +140,8 @@ export const homeSections = {
     "Send us your project requirements and our team will respond within one business day.",
   whyChooseIntro:
     "SeaCraft combines indigenous capability with technical partnerships to support safe, efficient, and compliant project delivery.",
+  aboutTeaser:
+    "SeaCraft Technology Solutions Ltd is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector.",
   aboutImage: "/images/about/team-vessel.jpg",
   aboutImageAlt: "SeaCraft team aboard an offshore vessel",
   whyChooseImage: "/images/why-choose-us/certified-crew.jpg",

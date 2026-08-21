@@ -23,6 +23,9 @@ export function ServicesGrid() {
             eyebrow="Core Services"
             title="Integrated Subsea & Offshore Capabilities"
             description={homeSections.servicesIntro}
+            eyebrowClassName="text-[#F5BF23]"
+            titleClassName="text-[#172168]"
+            descriptionClassName="text-[#1B1F23]"
           />
         </RevealOnScroll>
 
@@ -34,31 +37,22 @@ export function ServicesGrid() {
             <RevealStaggerItem key={service.slug} as="li">
               <Link
                 href={`/services/${service.slug}`}
-                className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+                className="group block h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2"
               >
-                <MotionCard className="h-full rounded-lg border border-border bg-white p-6 shadow-sm">
-                  <CardTitle>{service.title}</CardTitle>
-                  <CardDescription className="flex-1">
+                <MotionCard className="h-full rounded-lg border border-[#172168]/15 border-t-[3px] border-t-[#F5BF23] bg-white p-6 shadow-[0_8px_24px_rgba(23,33,104,0.08)]">
+                  <CardTitle className="text-[#172168]">{service.title}</CardTitle>
+                  <CardDescription className="flex-1 text-[#1B1F23]">
                     {service.shortDescription}
                   </CardDescription>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ocean-blue group-hover:gap-2">
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#F5BF23] underline-offset-4 group-hover:gap-2 group-hover:underline">
                     Learn more
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4" aria-hidden />
                   </span>
                 </MotionCard>
               </Link>
             </RevealStaggerItem>
           ))}
         </RevealStagger>
-
-        <RevealOnScroll className="mt-10 text-center">
-          <Link
-            href="/services"
-            className="text-sm font-semibold text-ocean-blue hover:text-ocean-blue/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2"
-          >
-            View all services →
-          </Link>
-        </RevealOnScroll>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import { Quote } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { testimonialsPlaceholder } from "@/content/company";
@@ -23,8 +24,16 @@ export function TestimonialsSwiper() {
         }}
       >
         <SwiperSlide>
-          <Card className="flex h-full min-h-[180px] items-center justify-center border-dashed bg-white/50 text-center">
-            <CardDescription className="text-base font-medium text-text/60">
+          <Card
+            className="flex h-full min-h-[180px] flex-col items-center justify-center gap-4 border-[#172168]/15 bg-white text-center shadow-[0_8px_24px_rgba(23,33,104,0.08)]"
+            style={{ borderTop: "3px solid #F5BF23" }}
+          >
+            <Quote
+              className="h-6 w-6 text-[#F5BF23] [filter:drop-shadow(0_0_0.75px_#172168)]"
+              strokeWidth={2.5}
+              aria-hidden
+            />
+            <CardDescription className="text-base font-medium text-[#1B1F23]">
               &ldquo;{testimonialsPlaceholder.message}&rdquo;
             </CardDescription>
           </Card>

@@ -1,18 +1,27 @@
+import type { CSSProperties } from "react";
+
 import { cn } from "@/lib/utils";
 
 type CardProps = {
   children: React.ReactNode;
   className?: string;
   as?: "div" | "article";
+  style?: CSSProperties;
 };
 
-export function Card({ children, className, as: Tag = "div" }: CardProps) {
+export function Card({
+  children,
+  className,
+  as: Tag = "div",
+  style,
+}: CardProps) {
   return (
     <Tag
       className={cn(
         "rounded-lg border border-border bg-white p-6 shadow-sm",
         className,
       )}
+      style={style}
     >
       {children}
     </Tag>

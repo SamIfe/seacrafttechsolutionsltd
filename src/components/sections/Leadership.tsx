@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import { homeSections } from "@/content/company";
@@ -10,6 +9,7 @@ import {
   RevealStagger,
   RevealStaggerItem,
 } from "@/components/motion/RevealOnScroll";
+import { LeadershipHeadshot } from "@/components/sections/LeadershipHeadshot";
 import { CardDescription, CardTitle } from "@/components/ui/Card";
 import { MotionCard } from "@/components/ui/MotionCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -31,16 +31,12 @@ export function Leadership() {
             <RevealStaggerItem key={leader.name} as="li">
               <MotionCard className="h-full rounded-lg border border-border bg-white p-6 shadow-sm">
                 <div className="mb-4 flex justify-center">
-                  <div className="relative h-28 w-28 overflow-hidden rounded-full border border-border bg-ocean-blue/10">
-                    <Image
-                      src={leader.image}
-                      alt={leader.name}
-                      fill
-                      sizes="112px"
-                      className="object-cover"
-                      style={{ objectPosition: leader.imagePosition ?? "center" }}
-                    />
-                  </div>
+                  <LeadershipHeadshot
+                    src={leader.image}
+                    alt={leader.name}
+                    objectPosition={leader.imagePosition ?? "center"}
+                    size={112}
+                  />
                 </div>
                 <CardTitle className="text-center">{leader.name}</CardTitle>
                 <p className="mt-1 text-center text-sm font-medium text-ocean-blue">

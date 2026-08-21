@@ -25,6 +25,7 @@ export default function ServicesPage() {
         title={pageIntros.services.title}
         description={pageIntros.services.description}
         breadcrumbs={[...breadcrumbs]}
+        brandAligned
       />
       <ServicesGrid />
     </>

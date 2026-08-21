@@ -39,7 +39,7 @@ export const equipment: EquipmentItem[] = [
   },
   {
     code: "TMT-NSS-018",
-    name: "Hydraulic Actuator Override Hot Stab — Single Port",
+    name: "Hydraulic Actuator Override Hot Stab - Single Port",
     description:
       "Single-port hydraulic hot stab for subsea actuator override operations.",
   },
@@ -141,7 +141,7 @@ export const equipment: EquipmentItem[] = [
   },
   {
     code: "TMT-NSS-003",
-    name: "Hydraulic Actuator Override Hot Stab — Two Port",
+    name: "Hydraulic Actuator Override Hot Stab - Two Port",
     description:
       "Two-port hydraulic hot stab for actuator override operations.",
   },
@@ -158,3 +158,31 @@ export const equipment: EquipmentItem[] = [
       "ROV-operated valve for subsea hydraulic and tooling control.",
   },
 ];
+
+export const equipmentStackPhotos = [
+  {
+    src: "/images/equipment/stack-1.png",
+    alt: "Subsea tooling photograph 1",
+    objectPosition: "center 46%",
+  },
+  {
+    src: "/images/equipment/stack-2.png",
+    alt: "Subsea tooling photograph 2",
+    objectPosition: "center 42%",
+  },
+  {
+    src: "/images/equipment/stack-3.png",
+    alt: "Subsea tooling photograph 3",
+    objectPosition: "center 38%",
+  },
+  {
+    src: "/images/equipment/stack-4.jpg",
+    alt: "Subsea tooling photograph 4",
+    objectPosition: "center 58%",
+  },
+  {
+    src: "/images/equipment/stack-5.jpg",
+    alt: "Subsea tooling photograph 5",
+    objectPosition: "center 52%",
+  },
+] as const;

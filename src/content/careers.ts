@@ -14,12 +14,14 @@ export const careers = {
   applyLabel: "Submit your enquiry",
   applyDescription:
     "Send your CV and a brief introduction to our team. We review all enquiries in confidence.",
+  image: "/images/careers/offshore-training.jpg",
+  imageAlt: "Offshore technicians in PPE working on industrial pipework",
 } as const;
 
 export const serviceDetailCta = {
   description:
     "Contact our team to scope your project and mobilize the right personnel and tooling.",
-  linkLabel: "Get in touch",
+  linkLabel: "Contact Us",
 } as const;
 
 export const pageIntros = {

@@ -7,23 +7,28 @@ import { siteConfig } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 /**
- * Drop your logo file into /public/logo/ and update LOGO_SRC to match
- * its filename (.svg, .png, or .jpeg all work).
+ * Footer / default mark. Navbar passes a different `src` for the header variant.
  */
-const LOGO_SRC = "/logo/STS_Mark_variant.svg";
+const DEFAULT_LOGO_SRC = "/logo/STS_Mark_variant.svg";
 
 type LogoProps = {
   className?: string;
+  /** Override the image file; footer keeps the default mark. */
+  src?: string;
   /** Rendered height in px; width scales automatically. */
   height?: number;
   /** Show the company name next to the logo image. */
   withText?: boolean;
 };
 
-export function Logo({ className, height = 36, withText = false }: LogoProps) {
+export function Logo({
+  className,
+  src = DEFAULT_LOGO_SRC,
+  height = 36,
+  withText = false,
+}: LogoProps) {
   const [imageFailed, setImageFailed] = useState(false);
 
-  // Fallback: original dot + wordmark until a logo file is added.
   if (imageFailed) {
     return (
       <span className={cn("inline-flex items-center gap-2", className)}>
@@ -38,9 +43,9 @@ export function Logo({ className, height = 36, withText = false }: LogoProps) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
       <Image
-        src={LOGO_SRC}
+        src={src}
         alt={siteConfig.name}
-        width={height * 3}
+        width={Math.round(height * 1.67)}
         height={height}
         priority
         className="w-auto"

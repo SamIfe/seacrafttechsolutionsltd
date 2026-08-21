@@ -7,6 +7,8 @@ import { homeCta } from "@/content/company";
 import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Button } from "@/components/ui/button";
+import { isSectionLive } from "@/lib/navigation";
+import { brandCtaClassName } from "@/lib/utils";
 
 export function CtaBanner() {
   return (
@@ -22,14 +24,25 @@ export function CtaBanner() {
           </p>
         </RevealOnScroll>
         <div className="mt-8 flex justify-center">
-          <MagneticButton>
-            <Button asChild className="bg-[#F5BF23] text-[#172168] hover:bg-[#e8b31f] hover:text-[#172168]">
-              <Link href="/contact">
-                Contact Us
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+          {isSectionLive("/contact") ? (
+            <MagneticButton>
+              <Button asChild className={brandCtaClassName}>
+                <Link href="/contact">
+                  Contact Us
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </MagneticButton>
+          ) : (
+            <Button
+              type="button"
+              disabled
+              className={`${brandCtaClassName} cursor-not-allowed`}
+            >
+              Contact Us
+              <ArrowRight className="h-4 w-4" />
             </Button>
-          </MagneticButton>
+          )}
         </div>
       </div>
     </section>

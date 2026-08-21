@@ -42,7 +42,7 @@ export const footerNav = {
     { label: "About", href: "/about" },
     { label: "Leadership", href: "/leadership" },
     { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact" },
+    { label: "Contact Us", href: "/contact" },
   ],
   services: [
     { label: "All Services", href: "/services" },
@@ -54,6 +54,13 @@ export const footerNav = {
     { label: "Terms", href: "/terms" },
   ],
 } as const;
+
+/** Public marketing sections currently live in the nav. Others remain built but disabled. */
+export const liveSectionHrefs = ["/", "/about", "/equipment"] as const;
+
+export function isSectionLive(href: string): boolean {
+  return (liveSectionHrefs as readonly string[]).includes(href);
+}
 
 export const allRoutes = [
   "/",

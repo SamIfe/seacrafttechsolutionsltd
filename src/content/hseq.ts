@@ -12,20 +12,30 @@ export const certifications: Certification[] = [
     name: "ISO 9001:2015",
     description:
       "Operations aligned with this internationally recognized quality management standard.",
+    logo: "/images/hseq/cert-iso-9001.png",
   },
   {
     name: "NCDMB",
     description: "Nigerian Content Development & Monitoring Board compliance.",
+    logo: "/images/hseq/cert-ncdmb.png",
   },
   {
     name: "NOGIC JQS",
     description: "NOGIC Joint Qualification System registration.",
+    logo: "/images/hseq/cert-nogic-jqs.png",
   },
   {
     name: "NCEC",
     description: "Nigerian Content Equipment Certificate.",
+    logo: "/images/hseq/cert-ncdmb.png",
+    footnote: "Issued under the Nigerian Content Development & Monitoring Board",
   },
 ];
+
+export const hseqPrinciplesImage = {
+  src: "/images/hseq/safety-principles.png",
+  alt: "Offshore crew in PPE during a safety briefing on deck",
+} as const;
 
 export const localContentCommitments: string[] = [
   "Prioritizing Nigerian talent and workforce development",

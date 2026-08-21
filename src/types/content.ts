@@ -62,6 +62,8 @@ export type Leader = {
 export type Certification = {
   name: string;
   description: string;
+  logo: string;
+  footnote?: string;
 };
 
 export type StatTile = {

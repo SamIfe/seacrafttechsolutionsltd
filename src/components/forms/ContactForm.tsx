@@ -10,10 +10,12 @@ import {
   contactFormSchema,
   type ContactFormValues,
 } from "@/lib/validations";
-import { cn } from "@/lib/utils";
+import { brandCtaClassName, cn } from "@/lib/utils";
+
+const fieldLabelClassName = "block text-sm font-medium text-[#1B1F23]";
 
 const inputClassName =
-  "mt-1 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+  "mt-1 w-full rounded-md border border-[#D1D5DB] bg-white px-3 py-2 text-sm text-[#1B1F23] transition-colors focus-visible:outline-none focus-visible:border-[#F5BF23] focus-visible:ring-2 focus-visible:ring-[#F5BF23] disabled:cursor-not-allowed disabled:opacity-60";
 
 type ContactFormProps = {
   className?: string;
@@ -66,12 +68,12 @@ export function ContactForm({ className }: ContactFormProps) {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className={cn(
-        "relative rounded-lg border border-border bg-surface p-6 md:p-8",
+        "relative rounded-lg border border-[#D1D5DB] bg-white p-6 md:p-8",
         className,
       )}
       noValidate
     >
-      <p className="mb-6 text-sm text-text/60">{homeSections.contactFormNote}</p>
+      <p className="mb-6 text-sm text-[#1B1F23]">{homeSections.contactFormNote}</p>
 
       <div className="absolute left-[-9999px] h-px w-px overflow-hidden" aria-hidden>
         <label htmlFor="contact-website">Website</label>
@@ -86,7 +88,7 @@ export function ContactForm({ className }: ContactFormProps) {
 
       <div className="space-y-4">
         <div>
-          <label htmlFor="contact-name" className="block text-sm font-medium text-navy">
+          <label htmlFor="contact-name" className={fieldLabelClassName}>
             Name <span className="text-destructive">*</span>
           </label>
           <input
@@ -106,7 +108,7 @@ export function ContactForm({ className }: ContactFormProps) {
         </div>
 
         <div>
-          <label htmlFor="contact-email" className="block text-sm font-medium text-navy">
+          <label htmlFor="contact-email" className={fieldLabelClassName}>
             Email <span className="text-destructive">*</span>
           </label>
           <input
@@ -126,8 +128,8 @@ export function ContactForm({ className }: ContactFormProps) {
         </div>
 
         <div>
-          <label htmlFor="contact-phone" className="block text-sm font-medium text-navy">
-            Phone <span className="text-text/50">(optional)</span>
+          <label htmlFor="contact-phone" className={fieldLabelClassName}>
+            Phone <span className="font-normal text-[#1B1F23]/50">(optional)</span>
           </label>
           <input
             id="contact-phone"
@@ -146,8 +148,8 @@ export function ContactForm({ className }: ContactFormProps) {
         </div>
 
         <div>
-          <label htmlFor="contact-company" className="block text-sm font-medium text-navy">
-            Company <span className="text-text/50">(optional)</span>
+          <label htmlFor="contact-company" className={fieldLabelClassName}>
+            Company <span className="font-normal text-[#1B1F23]/50">(optional)</span>
           </label>
           <input
             id="contact-company"
@@ -166,7 +168,7 @@ export function ContactForm({ className }: ContactFormProps) {
         </div>
 
         <div>
-          <label htmlFor="contact-message" className="block text-sm font-medium text-navy">
+          <label htmlFor="contact-message" className={fieldLabelClassName}>
             Message <span className="text-destructive">*</span>
           </label>
           <textarea
@@ -187,7 +189,7 @@ export function ContactForm({ className }: ContactFormProps) {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-cyan-strong text-white hover:bg-cyan-strong/90 focus-visible:ring-cyan"
+          className={cn("w-full", brandCtaClassName)}
         >
           {isSubmitting ? "Sending…" : "Send Message"}
         </Button>

@@ -5,9 +5,10 @@ import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import type { NavItem } from "@/lib/navigation";
+import { isSectionLive, type NavItem } from "@/lib/navigation";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { motionTokens } from "@/lib/motion";
+import { brandCtaClassName, cn } from "@/lib/utils";
 
 type MobileNavProps = {
   items: NavItem[];
@@ -93,8 +94,12 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
             </div>
 
             <ul className="flex-1 overflow-y-auto px-2 py-4">
-              {items.map((item) => (
+              {items.map((item) => {
+                const live = isSectionLive(item.href);
+
+                return (
                 <li key={item.href} className="mb-1">
+                  {live ? (
                   <Link
                     href={item.href}
                     className="block rounded-md px-3 py-2.5 font-medium text-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]"
@@ -102,7 +107,15 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
                   >
                     {item.label}
                   </Link>
-                  {item.children ? (
+                  ) : (
+                    <span
+                      className="block cursor-not-allowed rounded-md px-3 py-2.5 font-medium text-white/35"
+                      aria-disabled="true"
+                    >
+                      {item.label}
+                    </span>
+                  )}
+                  {live && item.children ? (
                     <ul className="ml-3 mt-1 space-y-1 border-l border-white/10 pl-3">
                       {item.children.map((child) => (
                         <li key={child.href}>
@@ -118,17 +131,33 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
                     </ul>
                   ) : null}
                 </li>
-              ))}
+                );
+              })}
             </ul>
 
             <div className="border-t border-white/10 p-4">
+              {isSectionLive("/contact") ? (
               <Link
                 href="/contact"
-                className="block rounded-md bg-[#F5BF23] px-4 py-3 text-center text-sm font-semibold text-[#172168] hover:bg-[#e8b31f] hover:text-[#172168] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]"
+                className={cn(
+                  "block rounded-md px-4 py-3 text-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]",
+                  brandCtaClassName,
+                )}
                 onClick={onClose}
               >
                 Contact Us
               </Link>
+              ) : (
+                <span
+                  className={cn(
+                    "block cursor-not-allowed rounded-md px-4 py-3 text-center text-sm font-semibold opacity-50",
+                    brandCtaClassName,
+                  )}
+                  aria-disabled="true"
+                >
+                  Contact Us
+                </span>
+              )}
             </div>
           </motion.nav>
         </>
