@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { company } from "@/content/company";
 import { careers } from "@/content/careers";
@@ -9,6 +10,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { buildBreadcrumbSchema, createPageMetadata } from "@/lib/seo";
+import { isSectionLive } from "@/lib/navigation";
 import { brandCtaClassName, cn } from "@/lib/utils";
 
 const CENTERED_FOCUS_AREA = "Marine and offshore operational support";
@@ -29,11 +31,20 @@ const sectionHeaderBrand = {
 const focusCardClassName =
   "rounded-lg border border-[#172168]/15 bg-white px-5 py-4 text-sm font-medium text-[#1B1F23] shadow-[0_8px_24px_rgba(23,33,104,0.08)]";
 
-export const metadata: Metadata = createPageMetadata({
-  title: careers.title,
-  description: careers.intro,
-  path: "/careers",
-});
+export function generateMetadata(): Metadata {
+  if (!isSectionLive("/careers")) {
+    return {
+      title: "Page Not Found",
+      robots: { index: false, follow: true },
+    };
+  }
+
+  return createPageMetadata({
+    title: careers.title,
+    description: careers.intro,
+    path: "/careers",
+  });
+}
 
 function FocusCard({
   area,
@@ -53,6 +64,10 @@ function FocusCard({
 }
 
 export default function CareersPage() {
+  if (!isSectionLive("/careers")) {
+    notFound();
+  }
+
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Careers", href: "/careers" },

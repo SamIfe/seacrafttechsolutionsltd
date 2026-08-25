@@ -5,6 +5,7 @@ import { ArrowRight, Home } from "lucide-react";
 import { company } from "@/content/company";
 import { notFoundPage } from "@/content/legal";
 import { Button } from "@/components/ui/button";
+import { isSectionLive } from "@/lib/navigation";
 import { brandCtaClassName } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -69,7 +70,9 @@ export default function NotFound() {
               You may be looking for
             </p>
             <ul className="mt-4 flex flex-wrap justify-center gap-4">
-              {notFoundPage.helpfulLinks.map((link) => (
+              {notFoundPage.helpfulLinks
+                .filter((link) => isSectionLive(link.href))
+                .map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

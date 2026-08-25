@@ -56,10 +56,21 @@ export const footerNav = {
 } as const;
 
 /** Public marketing sections currently live in the nav. Others remain built but disabled. */
-export const liveSectionHrefs = ["/", "/about", "/equipment"] as const;
+export const liveSectionHrefs = [
+  "/",
+  "/about",
+  "/equipment",
+  "/leadership",
+  "/hseq",
+] as const;
 
 export function isSectionLive(href: string): boolean {
-  return (liveSectionHrefs as readonly string[]).includes(href);
+  const live = liveSectionHrefs as readonly string[];
+  if (live.includes(href)) {
+    return true;
+  }
+
+  return live.some((path) => path !== "/" && href.startsWith(`${path}/`));
 }
 
 export const allRoutes = [

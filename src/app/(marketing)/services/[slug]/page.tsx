@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getServiceBySlug, services } from "@/content/services";
+import { isSectionLive } from "@/lib/navigation";
 import { PageHero } from "@/components/layout/PageHero";
 import { ServiceDetailSections } from "@/components/sections/ServiceDetailSections";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -16,6 +17,10 @@ type ServicePageProps = {
 };
 
 export async function generateStaticParams() {
+  if (!isSectionLive("/services")) {
+    return [];
+  }
+
   return services.map((service) => ({ slug: service.slug }));
 }
 
@@ -25,8 +30,8 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getServiceBySlug(slug);
 
-  if (!service) {
-    return { title: "Service Not Found" };
+  if (!isSectionLive("/services") || !service) {
+    return { title: "Service Not Found", robots: { index: false, follow: false } };
   }
 
   return createPageMetadata({
@@ -40,7 +45,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
 
-  if (!service) {
+  if (!isSectionLive("/services") || !service) {
     notFound();
   }
 

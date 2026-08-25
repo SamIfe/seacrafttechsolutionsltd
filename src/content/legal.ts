@@ -159,8 +159,9 @@ export const notFoundPage = {
   primaryAction: { label: "Return Home", href: "/" },
   secondaryAction: { label: "Contact Us", href: "/contact" },
   helpfulLinks: [
-    { label: "Services", href: "/services" },
-    { label: "Equipment", href: "/equipment" },
     { label: "About", href: "/about" },
+    { label: "Equipment", href: "/equipment" },
+    { label: "Leadership", href: "/leadership" },
+    { label: "HSEQ", href: "/hseq" },
   ],
 } as const;
