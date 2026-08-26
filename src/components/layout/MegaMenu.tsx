@@ -61,7 +61,7 @@ export function MegaMenu({
               : { opacity: 0, clipPath: "inset(0 0 100% 0)" }
           }
           transition={{ duration: motionTokens.duration.micro, ease: motionEase }}
-          className="absolute left-0 right-0 top-full z-50 border-t border-white/10 bg-[#172168] shadow-xl"
+          className="absolute left-0 right-0 top-full z-50 border-t border-[#172168]/10 bg-[#F7FAFC] shadow-xl"
           onMouseEnter={onPointerEnter}
           onMouseLeave={onPointerLeave}
           role="region"
@@ -84,17 +84,17 @@ export function MegaMenu({
                   <Link
                     href={item.href}
                     className={cn(
-                      "group block h-full rounded-lg border border-white/10 bg-white/5 px-4 py-3",
-                      "transition-colors hover:border-[#F5BF23]/40 hover:bg-white/10",
+                      "group block h-full rounded-lg border border-[#172168]/10 bg-white px-4 py-3",
+                      "transition-colors hover:border-[#F5BF23]/40 hover:bg-white",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23]",
                     )}
                     onClick={onClose}
                   >
-                    <span className="block font-heading text-sm font-semibold leading-snug text-white group-hover:text-[#F5BF23]">
+                    <span className="block font-heading text-sm font-semibold leading-snug text-[#172168] group-hover:text-[#F5BF23]">
                       {item.label}
                     </span>
                     {item.description ? (
-                      <span className="mt-1.5 block line-clamp-2 text-xs leading-relaxed text-white/60">
+                      <span className="mt-1.5 block line-clamp-2 text-xs leading-relaxed text-[#1B1F23]/70">
                         {item.description}
                       </span>
                     ) : null}
@@ -103,10 +103,10 @@ export function MegaMenu({
               ))}
             </div>
 
-            <div className="mt-5 border-t border-white/10 pt-4">
+            <div className="mt-5 border-t border-[#172168]/10 pt-4">
               <Link
                 href={servicesHref}
-                className="text-sm font-medium text-[#F5BF23] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23]"
+                className="text-sm font-medium text-[#F5BF23] hover:text-[#172168] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23]"
                 onClick={onClose}
               >
                 View all services →

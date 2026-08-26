@@ -64,7 +64,7 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
             initial={reducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-[#172168]/60 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-[#172168]/40 backdrop-blur-sm lg:hidden"
             aria-hidden
             onClick={onClose}
           />
@@ -75,17 +75,17 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={motionTokens.spring.drawer}
-            className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-[#172168] shadow-xl lg:hidden"
+            className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-[#F7FAFC] shadow-xl lg:hidden"
             aria-label="Mobile navigation"
           >
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
-              <span className="font-heading text-sm font-semibold text-white">
+            <div className="flex items-center justify-between border-b border-[#172168]/10 px-4 py-4">
+              <span className="font-heading text-sm font-semibold text-[#172168]">
                 Menu
               </span>
               <button
                 ref={closeButtonRef}
                 type="button"
-                className="rounded-md p-2 text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]"
+                className="rounded-md p-2 text-[#172168] hover:bg-[#172168]/5 hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]"
                 onClick={onClose}
                 aria-label="Close menu"
               >
@@ -102,26 +102,26 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
                   {live ? (
                   <Link
                     href={item.href}
-                    className="block rounded-md px-3 py-2.5 font-medium text-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]"
+                    className="block rounded-md px-3 py-2.5 font-medium text-[#172168] hover:bg-[#172168]/5 hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]"
                     onClick={onClose}
                   >
                     {item.label}
                   </Link>
                   ) : (
                     <span
-                      className="block cursor-not-allowed rounded-md px-3 py-2.5 font-medium text-white/35"
+                      className="block cursor-not-allowed rounded-md px-3 py-2.5 font-medium text-[#172168]/35"
                       aria-disabled="true"
                     >
                       {item.label}
                     </span>
                   )}
                   {live && item.children ? (
-                    <ul className="ml-3 mt-1 space-y-1 border-l border-white/10 pl-3">
+                    <ul className="ml-3 mt-1 space-y-1 border-l border-[#172168]/10 pl-3">
                       {item.children.map((child) => (
                         <li key={child.href}>
                           <Link
                             href={child.href}
-                            className="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]"
+                            className="block rounded-md px-3 py-2 text-sm text-[#172168]/80 hover:bg-[#172168]/5 hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]"
                             onClick={onClose}
                           >
                             {child.label}
@@ -135,12 +135,12 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
               })}
             </ul>
 
-            <div className="border-t border-white/10 p-4">
+            <div className="border-t border-[#172168]/10 p-4">
               {isSectionLive("/contact") ? (
               <Link
                 href="/contact"
                 className={cn(
-                  "block rounded-md px-4 py-3 text-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#172168]",
+                  "block rounded-md px-4 py-3 text-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]",
                   brandCtaClassName,
                 )}
                 onClick={onClose}
