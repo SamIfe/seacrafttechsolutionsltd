@@ -112,7 +112,7 @@ export function Hero() {
       role="region"
       aria-roledescription="carousel"
       aria-label="SeaCraft highlights"
-      className="relative min-h-[85vh] overflow-hidden bg-[#171B3B] text-white"
+      className="relative min-h-[85vh] overflow-x-hidden bg-[#171B3B] text-white"
       onPointerEnter={() => applyPaused(true, "pointerenter")}
       onPointerLeave={() => applyPaused(false, "pointerleave")}
       onFocus={() => applyPaused(true, "focus")}
@@ -173,33 +173,42 @@ export function Hero() {
 
       <div
         data-hero-content
-        className="relative mx-auto flex min-h-[85vh] w-full max-w-7xl flex-col justify-center px-4 py-20 md:px-6 md:py-24 lg:px-8"
+        className="relative mx-auto flex min-h-[85vh] w-full max-w-7xl flex-col justify-center px-4 py-16 md:px-6 md:py-24 lg:px-8"
       >
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6">
-              <p className="font-heading text-xs font-bold uppercase tracking-[0.08em] text-[#F5BF23] [text-shadow:0_1px_0_rgba(0,0,0,0.72),0_1px_2px_rgba(0,0,0,0.5),0_2px_8px_rgba(0,0,0,0.38)] md:text-[13px]">
-                {slide.eyebrow}
-              </p>
-              {textIndex === 0 ? (
-                <h1 className="mt-6 max-w-xl font-display text-4xl font-bold leading-[1.15] [text-shadow:0_1px_2px_rgba(0,0,0,0.5),0_2px_10px_rgba(0,0,0,0.38)] md:text-5xl lg:text-6xl">
-                  {slide.heading}
-                </h1>
-              ) : (
-                <h2 className="mt-6 max-w-xl font-display text-4xl font-bold leading-[1.15] [text-shadow:0_1px_2px_rgba(0,0,0,0.5),0_2px_10px_rgba(0,0,0,0.38)] md:text-5xl lg:text-6xl">
-                  {slide.heading}
-                </h2>
-              )}
-              <MagneticButton className="mt-8">
-                <Button asChild className={brandCtaClassName}>
-                  <Link href={heroCta.href}>
-                    {heroCta.label}
-                    <ArrowRight className="h-4 w-4" aria-hidden />
-                  </Link>
-                </Button>
-              </MagneticButton>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
+            {/*
+              Mobile: display:contents so heading / body / CTA can reorder
+              as a single stack (headline → subtext → button).
+              Desktop: flex column in cols 1–6, body in cols 8–12.
+            */}
+            <div className="contents lg:col-span-6 lg:flex lg:flex-col">
+              <div className="order-1" data-hero-heading>
+                <p className="font-heading text-xs font-bold uppercase tracking-[0.08em] text-[#F5BF23] [text-shadow:0_1px_0_rgba(0,0,0,0.72),0_1px_2px_rgba(0,0,0,0.5),0_2px_8px_rgba(0,0,0,0.38)] md:text-[13px]">
+                  {slide.eyebrow}
+                </p>
+                {textIndex === 0 ? (
+                  <h1 className="mt-6 max-w-xl font-display text-4xl font-bold leading-[1.15] [text-shadow:0_1px_2px_rgba(0,0,0,0.5),0_2px_10px_rgba(0,0,0,0.38)] md:text-5xl lg:text-6xl">
+                    {slide.heading}
+                  </h1>
+                ) : (
+                  <h2 className="mt-6 max-w-xl font-display text-4xl font-bold leading-[1.15] [text-shadow:0_1px_2px_rgba(0,0,0,0.5),0_2px_10px_rgba(0,0,0,0.38)] md:text-5xl lg:text-6xl">
+                    {slide.heading}
+                  </h2>
+                )}
+              </div>
+              <div className="order-3 justify-self-start lg:mt-8" data-hero-cta>
+                <MagneticButton>
+                  <Button asChild className={brandCtaClassName}>
+                    <Link href={heroCta.href}>
+                      {heroCta.label}
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </Link>
+                  </Button>
+                </MagneticButton>
+              </div>
             </div>
 
-            <div className="lg:col-span-5 lg:col-start-8">
+            <div className="order-2 lg:col-span-5 lg:col-start-8" data-hero-body>
               <p
                 className={cn(
                   "max-w-lg text-pretty text-justify text-sm font-medium text-white [text-justify:inter-word] [text-shadow:0_1px_2px_rgba(0,0,0,0.45),0_2px_8px_rgba(0,0,0,0.35)] md:text-base lg:ml-auto",
