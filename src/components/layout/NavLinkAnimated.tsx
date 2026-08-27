@@ -30,7 +30,7 @@ export function NavLinkAnimated({
         <span
           aria-hidden
           className={cn(
-            "absolute -bottom-0.5 left-0 h-px w-full origin-left bg-[#F5BF23] transition-transform duration-200",
+            "absolute -bottom-0.5 left-0 h-px w-full origin-left bg-[#171B3B] transition-transform duration-200",
             isActive
               ? "scale-x-100"
               : "scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100",

@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { isSectionLive, type NavItem } from "@/lib/navigation";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { motionTokens } from "@/lib/motion";
-import { brandCtaClassName, cn } from "@/lib/utils";
+import { cn, navOnGoldCtaClassName } from "@/lib/utils";
 
 type MobileNavProps = {
   items: NavItem[];
@@ -20,6 +21,11 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
   const reducedMotion = useReducedMotion();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -56,7 +62,11 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
     };
   }, [isOpen, onClose]);
 
-  return (
+  if (!mounted) {
+    return null;
+  }
+
+  return createPortal(
     <AnimatePresence>
       {isOpen ? (
         <>
@@ -64,7 +74,7 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
             initial={reducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-[#172168]/40 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-[100] bg-[#172168]/50 lg:hidden"
             aria-hidden
             onClick={onClose}
           />
@@ -75,17 +85,18 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={motionTokens.spring.drawer}
-            className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-[#F7FAFC] shadow-xl lg:hidden"
+            className="fixed inset-y-0 right-0 z-[110] flex h-dvh w-full max-w-sm flex-col bg-[#F5BF23] shadow-xl lg:hidden"
+            style={{ backgroundColor: "#F5BF23" }}
             aria-label="Mobile navigation"
           >
-            <div className="flex items-center justify-between border-b border-[#172168]/10 px-4 py-4">
+            <div className="flex items-center justify-between border-b border-[#172168]/15 px-4 py-4">
               <span className="font-heading text-sm font-semibold text-[#172168]">
                 Menu
               </span>
               <button
                 ref={closeButtonRef}
                 type="button"
-                className="rounded-md p-2 text-[#172168] hover:bg-[#172168]/5 hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]"
+                className="rounded-md p-2 text-[#172168] hover:bg-[#171B3B]/10 hover:text-[#171B3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5BF23]"
                 onClick={onClose}
                 aria-label="Close menu"
               >
@@ -102,26 +113,26 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
                   {live ? (
                   <Link
                     href={item.href}
-                    className="block rounded-md px-3 py-2.5 font-medium text-[#172168] hover:bg-[#172168]/5 hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]"
+                    className="block rounded-md px-3 py-2.5 font-medium text-[#172168] hover:bg-[#171B3B]/10 hover:text-[#171B3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5BF23]"
                     onClick={onClose}
                   >
                     {item.label}
                   </Link>
                   ) : (
                     <span
-                      className="block cursor-not-allowed rounded-md px-3 py-2.5 font-medium text-[#172168]/35"
+                      className="block cursor-not-allowed rounded-md px-3 py-2.5 font-medium text-[#172168]/50"
                       aria-disabled="true"
                     >
                       {item.label}
                     </span>
                   )}
                   {live && item.children ? (
-                    <ul className="ml-3 mt-1 space-y-1 border-l border-[#172168]/10 pl-3">
+                    <ul className="ml-3 mt-1 space-y-1 border-l border-[#172168]/20 pl-3">
                       {item.children.map((child) => (
                         <li key={child.href}>
                           <Link
                             href={child.href}
-                            className="block rounded-md px-3 py-2 text-sm text-[#172168]/80 hover:bg-[#172168]/5 hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]"
+                            className="block rounded-md px-3 py-2 text-sm text-[#172168]/80 hover:bg-[#171B3B]/10 hover:text-[#171B3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5BF23]"
                             onClick={onClose}
                           >
                             {child.label}
@@ -135,13 +146,13 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
               })}
             </ul>
 
-            <div className="border-t border-[#172168]/10 p-4">
+            <div className="border-t border-[#172168]/15 p-4">
               {isSectionLive("/contact") ? (
               <Link
                 href="/contact"
                 className={cn(
-                  "block rounded-md px-4 py-3 text-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]",
-                  brandCtaClassName,
+                  "block rounded-md px-4 py-3 text-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5BF23]",
+                  navOnGoldCtaClassName,
                 )}
                 onClick={onClose}
               >
@@ -151,7 +162,7 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
                 <span
                   className={cn(
                     "block cursor-not-allowed rounded-md px-4 py-3 text-center text-sm font-semibold opacity-50",
-                    brandCtaClassName,
+                    navOnGoldCtaClassName,
                   )}
                   aria-disabled="true"
                 >
@@ -162,6 +173,7 @@ export function MobileNav({ items, isOpen, onClose }: MobileNavProps) {
           </motion.nav>
         </>
       ) : null}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }

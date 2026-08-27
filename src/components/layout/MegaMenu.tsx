@@ -61,14 +61,14 @@ export function MegaMenu({
               : { opacity: 0, clipPath: "inset(0 0 100% 0)" }
           }
           transition={{ duration: motionTokens.duration.micro, ease: motionEase }}
-          className="absolute left-0 right-0 top-full z-50 border-t border-[#172168]/10 bg-[#F7FAFC] shadow-xl"
+          className="absolute left-0 right-0 top-full z-50 border-t border-[#172168]/20 bg-[#F5BF23] shadow-xl"
           onMouseEnter={onPointerEnter}
           onMouseLeave={onPointerLeave}
           role="region"
           aria-label="Services menu"
         >
           <div className="mx-auto max-w-7xl px-4 py-6 md:px-6 lg:px-8">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#F5BF23]">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#172168]">
               Our Services
             </p>
 
@@ -84,13 +84,13 @@ export function MegaMenu({
                   <Link
                     href={item.href}
                     className={cn(
-                      "group block h-full rounded-lg border border-[#172168]/10 bg-white px-4 py-3",
-                      "transition-colors hover:border-[#F5BF23]/40 hover:bg-white",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23]",
+                      "group block h-full rounded-lg border border-[#172168]/15 bg-[#F5BF23] px-4 py-3",
+                      "transition-colors hover:border-[#171B3B]/40 hover:bg-[#171B3B]/10",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168]",
                     )}
                     onClick={onClose}
                   >
-                    <span className="block font-heading text-sm font-semibold leading-snug text-[#172168] group-hover:text-[#F5BF23]">
+                    <span className="block font-heading text-sm font-semibold leading-snug text-[#172168] group-hover:text-[#171B3B]">
                       {item.label}
                     </span>
                     {item.description ? (
@@ -103,10 +103,10 @@ export function MegaMenu({
               ))}
             </div>
 
-            <div className="mt-5 border-t border-[#172168]/10 pt-4">
+            <div className="mt-5 border-t border-[#172168]/20 pt-4">
               <Link
                 href={servicesHref}
-                className="text-sm font-medium text-[#F5BF23] hover:text-[#172168] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23]"
+                className="text-sm font-medium text-[#172168] hover:text-[#171B3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168]"
                 onClick={onClose}
               >
                 View all services →

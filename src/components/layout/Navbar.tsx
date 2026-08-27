@@ -8,7 +8,7 @@ import { ChevronDown, Menu } from "lucide-react";
 
 import { isSectionLive, mainNav } from "@/lib/navigation";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { brandCtaClassName, cn } from "@/lib/utils";
+import { cn, navOnGoldCtaClassName } from "@/lib/utils";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Logo } from "@/components/layout/Logo";
 import { MegaMenu } from "@/components/layout/MegaMenu";
@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 const servicesNavItem = mainNav.find((item) => item.label === "Services");
 
 const navLinkClassName =
-  "rounded-md px-3 py-2 text-sm font-medium text-[#172168] transition-colors hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]";
+  "rounded-md px-3 py-2 text-sm font-medium text-[#172168] transition-colors hover:text-[#171B3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5BF23]";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -30,20 +30,15 @@ export function Navbar() {
   const headerRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
 
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 72],
-    ["rgba(247,250,252,0.92)", "#F7FAFC"],
-  );
   const boxShadow = useTransform(
     scrollY,
     [0, 72],
-    ["0 0 0 rgba(23,33,104,0)", "0 8px 24px rgba(23,33,104,0.08)"],
+    ["0 0 0 rgba(23,33,104,0)", "0 8px 24px rgba(23,27,59,0.18)"],
   );
   const borderBottomColor = useTransform(
     scrollY,
     [0, 72],
-    ["rgba(23,33,104,0.06)", "rgba(23,33,104,0.12)"],
+    ["rgba(23,33,104,0.12)", "rgba(23,33,104,0.22)"],
   );
 
   const openMegaMenu = useCallback(() => {
@@ -86,23 +81,22 @@ export function Navbar() {
   }, [pathname, closeMegaMenu]);
 
   return (
+    <>
     <motion.header
       ref={headerRef}
       className={cn(
-        "relative sticky top-0 z-50 border-b text-[#172168] backdrop-blur-md",
+        "relative sticky top-0 z-50 border-b bg-[#F5BF23] text-[#172168]",
         reducedMotion &&
-          "border-[#172168]/10 bg-[#F7FAFC] shadow-[0_8px_24px_rgba(23,33,104,0.08)]",
+          "border-[#172168]/20 shadow-[0_8px_24px_rgba(23,27,59,0.18)]",
       )}
       style={
-        reducedMotion
-          ? undefined
-          : { backgroundColor, boxShadow, borderBottomColor }
+        reducedMotion ? undefined : { boxShadow, borderBottomColor }
       }
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:px-6 lg:px-8">
         <Link
           href="/"
-          className="inline-flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC]"
+          className="inline-flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5BF23]"
         >
           <Logo src="/logo/header-logo.svg" height={32} />
         </Link>
@@ -129,7 +123,7 @@ export function Navbar() {
                 return (
                   <li key={item.href}>
                     <span
-                      className="cursor-not-allowed rounded-md px-3 py-2 text-sm font-medium text-[#172168]/35"
+                      className="cursor-not-allowed rounded-md px-3 py-2 text-sm font-medium text-[#172168]/50"
                       aria-disabled="true"
                     >
                       {item.label}
@@ -188,7 +182,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           {isSectionLive("/contact") ? (
             <MagneticButton className="hidden lg:inline-flex">
-              <Button asChild className={brandCtaClassName}>
+              <Button asChild className={navOnGoldCtaClassName}>
                 <Link href="/contact">Contact Us</Link>
               </Button>
             </MagneticButton>
@@ -196,7 +190,7 @@ export function Navbar() {
             <Button
               type="button"
               disabled
-              className={`${brandCtaClassName} hidden cursor-not-allowed lg:inline-flex`}
+              className={`${navOnGoldCtaClassName} hidden cursor-not-allowed lg:inline-flex`}
             >
               Contact Us
             </Button>
@@ -204,7 +198,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className="rounded-md p-2 text-[#172168] hover:bg-[#172168]/5 hover:text-[#F5BF23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5BF23] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7FAFC] lg:hidden"
+            className="rounded-md p-2 text-[#172168] hover:bg-[#171B3B]/10 hover:text-[#171B3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5BF23] lg:hidden"
             onClick={() => setMobileOpen(true)}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
@@ -226,12 +220,12 @@ export function Navbar() {
           onPointerLeave={scheduleCloseMegaMenu}
         />
       ) : null}
-
-      <MobileNav
-        items={mainNav}
-        isOpen={mobileOpen}
-        onClose={() => setMobileOpen(false)}
-      />
     </motion.header>
+    <MobileNav
+      items={mainNav}
+      isOpen={mobileOpen}
+      onClose={() => setMobileOpen(false)}
+    />
+    </>
   );
 }
