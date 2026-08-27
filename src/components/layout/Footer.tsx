@@ -8,6 +8,9 @@ import { Logo } from "@/components/layout/Logo";
 import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
 import { footerNav, isSectionLive, siteConfig } from "@/lib/navigation";
 
+const footerHeadingClassName =
+  "font-heading text-base font-bold uppercase tracking-[0.08em] text-[#F5BF23]";
+
 function FooterLink({ href, label }: { href: string; label: string }) {
   if (!isSectionLive(href) && href !== "/privacy" && href !== "/terms") {
     return (
@@ -55,7 +58,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/80">
+              <h2 className={footerHeadingClassName}>
                 Company
               </h2>
               <ul className="mt-4 space-y-2">
@@ -68,7 +71,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/80">
+              <h2 className={footerHeadingClassName}>
                 Services
               </h2>
               <ul className="mt-4 space-y-2">
@@ -81,7 +84,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/80">
+              <h2 className={footerHeadingClassName}>
                 Legal
               </h2>
               <ul className="mt-4 space-y-2">

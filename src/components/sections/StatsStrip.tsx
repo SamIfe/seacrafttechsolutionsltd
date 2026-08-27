@@ -7,7 +7,7 @@ export function StatsStrip() {
         <ul className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {statTiles.map((tile) => (
             <li key={tile.label}>
-              <p className="font-heading text-3xl font-bold text-[#172168] md:text-4xl">
+              <p className="heading-display font-heading text-3xl font-extrabold text-[#172168] md:text-4xl">
                 {tile.value}
               </p>
               <p className="mt-2 text-sm leading-snug text-text/70">

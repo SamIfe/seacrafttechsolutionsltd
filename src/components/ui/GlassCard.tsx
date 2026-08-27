@@ -23,7 +23,7 @@ export function GlassCard({
       )}
       style={{ border: "1px solid rgba(255, 255, 255, 0.12)", ...style }}
     >
-      <h3 className="font-heading text-lg font-semibold text-white">{title}</h3>
+      <h3 className="font-heading text-lg font-bold text-white">{title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-white md:text-base">
         {children}
       </p>

@@ -27,7 +27,7 @@ export default function NotFound() {
             <p className="font-heading text-6xl font-bold tracking-tight text-cyan md:text-7xl">
               {notFoundPage.code}
             </p>
-            <h1 className="mt-4 font-heading text-2xl font-bold md:text-3xl">
+            <h1 className="heading-display mt-4 font-heading text-2xl font-extrabold md:text-3xl">
               {notFoundPage.title}
             </h1>
             <p className="mt-4 text-base leading-relaxed text-white/80">

@@ -42,7 +42,7 @@ export function CardTitle({
   return (
     <Tag
       className={cn(
-        "font-heading text-lg font-semibold text-navy",
+        "font-heading text-lg font-bold text-[#172168]",
         className,
       )}
     >

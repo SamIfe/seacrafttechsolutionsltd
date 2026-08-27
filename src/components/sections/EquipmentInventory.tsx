@@ -30,7 +30,7 @@ export function EquipmentInventory() {
                 eyebrow="Full Inventory"
                 title={`${equipment.length} Specialized Subsea Tools`}
                 description="Complete equipment inventory with tool codes and general function descriptions."
-                eyebrowClassName="text-[#F5BF23]"
+                eyebrowClassName="text-[#172168]"
                 titleClassName="text-[#172168]"
                 descriptionClassName="text-[#1B1F23]"
               />

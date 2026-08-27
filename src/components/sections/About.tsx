@@ -35,7 +35,6 @@ export function About({ variant = "teaser" }: AboutProps) {
                 description={
                   isFull ? company.overview : homeSections.aboutTeaser
                 }
-                eyebrowClassName="text-[#F5BF23]"
                 titleClassName="text-[#172168]"
                 descriptionClassName="text-[#1B1F23]"
               />

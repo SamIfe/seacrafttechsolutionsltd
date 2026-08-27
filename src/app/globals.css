@@ -46,7 +46,9 @@
   }
 
   body {
-    @apply bg-surface text-text font-sans antialiased;
+    @apply bg-surface text-text font-sans;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
   }
 
   h1,
@@ -56,6 +58,15 @@
   h5,
   h6 {
     @apply font-heading;
+  }
+
+  h1,
+  h2 {
+    @apply font-extrabold;
+  }
+
+  h3 {
+    @apply font-bold;
   }
 
   :focus:not(:focus-visible) {
@@ -117,6 +128,36 @@
   to {
     background-position: -200% 0;
   }
+}
+
+/*
+  Display type on light grounds: subpixel AA + a hairline ink stroke.
+  Lives outside @layer so it beats Tailwind `antialiased` if a parent sets it.
+  This is not a drop-shadow — it thickens the glyph so Windows grayscale AA
+  cannot eat the stems.
+*/
+h1,
+h2,
+h3,
+h4,
+.heading-sharp,
+.heading-display,
+.section-kicker {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  -moz-osx-font-smoothing: auto;
+}
+
+h1,
+h2,
+.heading-display {
+  -webkit-text-stroke: 0.45px currentColor;
+}
+
+h3,
+.section-kicker {
+  -webkit-text-stroke: 0.35px currentColor;
 }
 
 @media (prefers-reduced-motion: reduce) {

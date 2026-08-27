@@ -3,14 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import {
-  firstImageIndexForSlide,
+  heroCta,
   heroImageLayers,
   heroSlides,
 } from "@/content/hero";
 import { HeroMotion } from "@/components/sections/HeroMotion";
+import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Button } from "@/components/ui/button";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { brandCtaClassName, cn } from "@/lib/utils";
@@ -104,12 +105,6 @@ export function Hero() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const goTo = (slideIndex: number) => {
-    const wrapped = (slideIndex + heroSlides.length) % heroSlides.length;
-    const start = firstImageIndexForSlide(wrapped);
-    setImageIndex(start === -1 ? 0 : start);
-  };
-
   return (
     <section
       ref={sectionRef}
@@ -168,7 +163,7 @@ export function Hero() {
               </div>
               <div
                 aria-hidden
-                className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,27,59,0.84)_0%,rgba(23,33,104,0.78)_50%,rgba(23,27,59,0.84)_100%)] lg:bg-[linear-gradient(90deg,rgba(23,27,59,0.84)_0%,rgba(23,33,104,0.78)_30%,rgba(23,33,104,0.50)_50%,rgba(23,33,104,0.76)_70%,rgba(23,27,59,0.84)_100%)]"
+                className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,33,104,0.86)_0%,rgba(23,33,104,0.80)_48%,rgba(23,33,104,0.82)_100%)] lg:bg-[linear-gradient(90deg,rgba(23,33,104,0.86)_0%,rgba(23,33,104,0.80)_28%,rgba(23,33,104,0.66)_48%,rgba(23,33,104,0.68)_62%,rgba(23,33,104,0.80)_80%,rgba(23,33,104,0.86)_100%)]"
               />
             </div>
           );
@@ -182,35 +177,32 @@ export function Hero() {
       >
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#F5BF23] [text-shadow:0_1px_8px_rgba(23,27,59,0.7)] md:text-[13px]">
+              <p className="font-heading text-xs font-bold uppercase tracking-[0.08em] text-[#F5BF23] [text-shadow:0_1px_0_rgba(0,0,0,0.72),0_1px_2px_rgba(0,0,0,0.5),0_2px_8px_rgba(0,0,0,0.38)] md:text-[13px]">
                 {slide.eyebrow}
               </p>
               {textIndex === 0 ? (
-                <h1 className="mt-6 max-w-xl font-display text-4xl font-medium leading-[1.15] [text-shadow:0_2px_16px_rgba(23,27,59,0.55)] md:text-5xl lg:text-6xl">
+                <h1 className="mt-6 max-w-xl font-display text-4xl font-bold leading-[1.15] [text-shadow:0_1px_2px_rgba(0,0,0,0.5),0_2px_10px_rgba(0,0,0,0.38)] md:text-5xl lg:text-6xl">
                   {slide.heading}
                 </h1>
               ) : (
-                <h2 className="mt-6 max-w-xl font-display text-4xl font-medium leading-[1.15] [text-shadow:0_2px_16px_rgba(23,27,59,0.55)] md:text-5xl lg:text-6xl">
+                <h2 className="mt-6 max-w-xl font-display text-4xl font-bold leading-[1.15] [text-shadow:0_1px_2px_rgba(0,0,0,0.5),0_2px_10px_rgba(0,0,0,0.38)] md:text-5xl lg:text-6xl">
                   {slide.heading}
                 </h2>
               )}
-              {slide.cta ? (
-                <Button
-                  asChild
-                  className={cn("mt-8", brandCtaClassName)}
-                >
-                  <Link href={slide.cta.href}>
-                    {slide.cta.label}
+              <MagneticButton className="mt-8">
+                <Button asChild className={brandCtaClassName}>
+                  <Link href={heroCta.href}>
+                    {heroCta.label}
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                 </Button>
-              ) : null}
+              </MagneticButton>
             </div>
 
             <div className="lg:col-span-5 lg:col-start-8">
               <p
                 className={cn(
-                  "max-w-lg text-pretty text-justify text-sm text-white [text-justify:inter-word] [text-shadow:0_1px_8px_rgba(23,27,59,0.6)] md:text-base lg:ml-auto",
+                  "max-w-lg text-pretty text-justify text-sm font-medium text-white [text-justify:inter-word] [text-shadow:0_1px_2px_rgba(0,0,0,0.45),0_2px_8px_rgba(0,0,0,0.35)] md:text-base lg:ml-auto",
                   textIndex === 0 ? "leading-[1.7]" : "leading-[1.8]",
                 )}
               >
@@ -218,49 +210,6 @@ export function Hero() {
               </p>
             </div>
           </div>
-
-        <div className="mt-14 flex items-center gap-6 lg:mt-20">
-          <div className="flex gap-2">
-            <button
-              type="button"
-              aria-label="Previous slide"
-              onClick={() => goTo(textIndex - 1)}
-              className="border border-white/40 p-3 text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
-            >
-              <ChevronLeft className="h-4 w-4" aria-hidden />
-            </button>
-            <button
-              type="button"
-              aria-label="Next slide"
-              onClick={() => goTo(textIndex + 1)}
-              className="border border-white/40 p-3 text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
-            >
-              <ChevronRight className="h-4 w-4" aria-hidden />
-            </button>
-          </div>
-
-          <div className="flex items-center gap-2.5">
-            {heroSlides.map((item, index) => (
-              <button
-                key={item.heading}
-                type="button"
-                aria-label={`Go to slide ${index + 1}`}
-                aria-current={index === textIndex ? "true" : undefined}
-                onClick={() => goTo(index)}
-                className={cn(
-                  "h-2.5 w-2.5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-navy",
-                  index === textIndex
-                    ? "bg-[#F5BF23]"
-                    : "bg-white/35 hover:bg-white/60",
-                )}
-              />
-            ))}
-          </div>
-
-          <p className="sr-only" aria-live="polite">
-            Slide {textIndex + 1} of {heroSlides.length}
-          </p>
-        </div>
       </div>
 
       <HeroMotion />

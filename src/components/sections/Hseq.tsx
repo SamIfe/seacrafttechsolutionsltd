@@ -29,7 +29,7 @@ export function Hseq() {
             <RevealStaggerItem key={principle} as="li">
               <div className="flex items-start gap-3 rounded-lg border border-border bg-surface px-5 py-4">
                 <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-teal" aria-hidden />
-                <span className="font-heading text-sm font-semibold text-navy md:text-base">
+                <span className="font-heading text-sm font-bold text-[#172168] md:text-base">
                   {principle}
                 </span>
               </div>

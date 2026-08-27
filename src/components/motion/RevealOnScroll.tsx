@@ -7,6 +7,20 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { motionEase, motionTokens, revealViewport } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
+/** Drop GPU translate once the reveal settles so text rasterizes on the pixel grid. */
+function dropRestingTransform(
+  transform: { y?: string | number },
+  generated: string,
+) {
+  const y = transform.y;
+  const numeric =
+    typeof y === "number" ? y : Number.parseFloat(String(y ?? 0));
+  if (!Number.isFinite(numeric) || Math.abs(numeric) < 0.01) {
+    return "none";
+  }
+  return generated;
+}
+
 type RevealOnScrollProps = {
   children: ReactNode;
   className?: string;
@@ -34,6 +48,7 @@ export function RevealOnScroll({
         ease: motionEase,
         delay,
       }}
+      transformTemplate={dropRestingTransform}
       className={cn(className)}
     >
       {children}
@@ -121,7 +136,11 @@ export function RevealStaggerItem({
   }
 
   return (
-    <Component variants={staggerItemVariants} className={className}>
+    <Component
+      variants={staggerItemVariants}
+      transformTemplate={dropRestingTransform}
+      className={className}
+    >
       {children}
     </Component>
   );

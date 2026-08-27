@@ -15,7 +15,7 @@ type ServiceDetailSectionsProps = {
 };
 
 const sectionHeaderBrand = {
-  eyebrowClassName: "text-[#F5BF23]",
+  eyebrowClassName: "text-[#172168]",
   titleClassName: "text-[#172168]",
 } as const;
 
@@ -103,7 +103,7 @@ export function ServiceDetailSections({ service }: ServiceDetailSectionsProps) {
 
       <RevealOnScroll>
         <section className="rounded-lg border border-[#D1D5DB] bg-white px-6 py-8 text-center md:px-10">
-          <h2 className="font-heading text-xl font-bold text-[#172168]">
+          <h2 className="heading-display font-heading text-2xl font-extrabold text-[#172168] md:text-3xl">
             Discuss your {service.title.toLowerCase()} requirements
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[#1B1F23]">

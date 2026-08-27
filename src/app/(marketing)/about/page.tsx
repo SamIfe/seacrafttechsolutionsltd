@@ -41,7 +41,7 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="Core Values"
             title="What Guides Us"
-            eyebrowClassName="text-[#F5BF23]"
+            eyebrowClassName="text-[#172168]"
             titleClassName="text-[#172168]"
           />
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_minmax(280px,0.85fr)] lg:grid-rows-3 lg:items-stretch">
@@ -56,7 +56,7 @@ export default function AboutPage() {
                   )}
                   style={{ borderTop: "3px solid #F5BF23" }}
                 >
-                  <h3 className="font-heading text-lg font-semibold text-[#172168]">
+                  <h3 className="font-heading text-lg font-bold text-[#172168]">
                     {value.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#1B1F23]">

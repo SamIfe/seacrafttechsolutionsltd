@@ -12,7 +12,7 @@ type ContactSectionProps = {
 };
 
 const labelClassName =
-  "font-heading text-sm font-semibold uppercase tracking-wider text-[#F5BF23]";
+  "font-heading text-sm font-extrabold uppercase tracking-[0.12em] text-[#172168]";
 
 const bodyClassName = "mt-1 text-sm leading-relaxed text-[#1B1F23]";
 
@@ -32,7 +32,7 @@ export function ContactSection({ showHeader = true }: ContactSectionProps) {
               eyebrow="Contact"
               title="Get in Touch"
               description={homeSections.contactIntro}
-              eyebrowClassName="text-[#F5BF23]"
+              eyebrowClassName="text-[#172168]"
               titleClassName="text-[#172168]"
               descriptionClassName="text-[#1B1F23]"
             />

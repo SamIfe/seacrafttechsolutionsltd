@@ -39,7 +39,7 @@ export function Testimonials() {
             description={homeSections.testimonialsIntro}
             align="center"
             className="mx-auto"
-            eyebrowClassName="text-[#F5BF23]"
+            eyebrowClassName="text-[#172168]"
             titleClassName="text-[#172168]"
             descriptionClassName="text-[#1B1F23]"
           />

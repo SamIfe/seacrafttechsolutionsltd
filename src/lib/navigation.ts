@@ -62,6 +62,8 @@ export const liveSectionHrefs = [
   "/equipment",
   "/leadership",
   "/hseq",
+  "/careers",
+  "/contact",
 ] as const;
 
 export function isSectionLive(href: string): boolean {

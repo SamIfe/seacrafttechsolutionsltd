@@ -32,20 +32,29 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? (
-        <p
-          className={cn(
-            "mb-3 text-sm font-semibold uppercase tracking-wider",
-            dark ? "text-cyan" : "text-ocean-blue",
-            eyebrowClassName,
-          )}
-        >
-          {eyebrow}
-        </p>
+        <>
+          <p
+            className={cn(
+              "section-kicker mb-3 font-heading text-[13px] font-extrabold uppercase tracking-[0.14em] md:text-sm",
+              dark ? "text-[#F5BF23]" : "text-[#172168]",
+              eyebrowClassName,
+            )}
+          >
+            {eyebrow}
+          </p>
+          <span
+            aria-hidden
+            className={cn(
+              "mb-5 mt-1 block h-[3px] w-11 bg-[#F5BF23]",
+              align === "center" && "mx-auto",
+            )}
+          />
+        </>
       ) : null}
       <h2
         className={cn(
-          "font-heading text-3xl font-bold tracking-tight md:text-4xl",
-          dark ? "text-white" : "text-navy",
+          "heading-display font-heading text-4xl font-extrabold leading-[1.12] tracking-normal md:text-5xl",
+          dark ? "text-white" : "text-[#172168]",
           titleClassName,
         )}
       >

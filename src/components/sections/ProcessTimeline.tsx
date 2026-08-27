@@ -27,7 +27,7 @@ export function ProcessTimeline() {
             description={homeSections.processIntro}
             align="center"
             className="mx-auto"
-            eyebrowClassName="text-[#F5BF23]"
+            eyebrowClassName="text-[#172168]"
             titleClassName="text-[#172168]"
             descriptionClassName="text-[#1B1F23]"
           />
@@ -77,7 +77,7 @@ export function ProcessTimeline() {
                     <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#F5BF23] font-heading text-sm font-bold text-[#172168]">
                       {step.step}
                     </span>
-                    <h3 className="mt-4 font-heading text-lg font-semibold text-[#172168]">
+                    <h3 className="mt-4 font-heading text-lg font-bold text-[#172168]">
                       {step.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#1B1F23]">

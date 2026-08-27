@@ -26,7 +26,7 @@ export function LegalDocument({
         <p className="text-sm font-semibold uppercase tracking-wider text-ocean-blue">
           Legal
         </p>
-        <h1 className="mt-2 font-heading text-3xl font-bold text-navy md:text-4xl">
+        <h1 className="heading-display mt-2 font-heading text-4xl font-extrabold leading-[1.12] text-[#172168] md:text-5xl">
           {title}
         </h1>
         <p className="mt-3 text-base leading-relaxed text-text/70">
@@ -40,7 +40,7 @@ export function LegalDocument({
 
         {sections.map((section) => (
           <section key={section.title}>
-            <h2 className="font-heading text-xl font-semibold text-navy">
+            <h2 className="font-heading text-xl font-bold text-[#172168]">
               {section.title}
             </h2>
             <div className="mt-3 space-y-3">

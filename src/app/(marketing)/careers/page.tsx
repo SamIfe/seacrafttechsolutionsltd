@@ -23,7 +23,7 @@ const lowerFocusAreas = careers.focusAreas.filter(
 ).slice(2);
 
 const sectionHeaderBrand = {
-  eyebrowClassName: "text-[#F5BF23]",
+  eyebrowClassName: "text-[#172168]",
   titleClassName: "text-[#172168]",
   descriptionClassName: "text-[#1B1F23]",
 } as const;
@@ -129,7 +129,7 @@ export default function CareersPage() {
         </section>
 
         <div className="mt-12 rounded-lg border border-[#172168]/15 bg-white px-6 py-8 text-center shadow-[0_8px_24px_rgba(23,33,104,0.08)] md:px-10">
-          <h2 className="font-heading text-xl font-bold text-[#172168]">
+          <h2 className="heading-display font-heading text-2xl font-extrabold text-[#172168] md:text-3xl">
             {careers.applyLabel}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[#1B1F23]">

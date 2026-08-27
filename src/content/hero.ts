@@ -1,12 +1,16 @@
 import type { HeroSlide } from "@/types/content";
 
+export const heroCta = {
+  label: "About Seacraft",
+  href: "/about",
+} as const;
+
 export const heroSlides: HeroSlide[] = [
   {
     eyebrow: "ABOUT SEACRAFT",
     heading: "Indigenous, Innovative & Collaborative.",
     body: "We are a Nigeria indigenous Subsea and Marine engineering company dedicated to providing quality, and leading edge innovative technological driven services",
     images: ["/images/hero/slide1a.jpg", "/images/hero/slide1b.jpg"],
-    cta: { label: "About Seacraft", href: "/about" },
   },
   {
     eyebrow: "YEARS OF EXPERIENCE",

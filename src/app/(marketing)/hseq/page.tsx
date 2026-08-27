@@ -16,7 +16,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { buildBreadcrumbSchema, createPageMetadata } from "@/lib/seo";
 
 const sectionHeaderBrand = {
-  eyebrowClassName: "text-[#F5BF23]",
+  eyebrowClassName: "text-[#172168]",
   titleClassName: "text-[#172168]",
   descriptionClassName: "text-[#1B1F23]",
 } as const;
@@ -101,7 +101,7 @@ export default function HseqPage() {
                   src={cert.logo}
                   alt={`${cert.name} certification badge`}
                 />
-                <h3 className="mt-4 text-center font-heading text-base font-semibold text-[#172168]">
+                <h3 className="mt-4 text-center font-heading text-base font-bold text-[#172168]">
                   {cert.name}
                 </h3>
                 <p className="mt-2 text-center text-sm leading-relaxed text-[#1B1F23]">

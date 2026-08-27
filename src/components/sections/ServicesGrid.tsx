@@ -23,7 +23,7 @@ export function ServicesGrid() {
             eyebrow="Core Services"
             title="Integrated Subsea & Offshore Capabilities"
             description={homeSections.servicesIntro}
-            eyebrowClassName="text-[#F5BF23]"
+            eyebrowClassName="text-[#172168]"
             titleClassName="text-[#172168]"
             descriptionClassName="text-[#1B1F23]"
           />

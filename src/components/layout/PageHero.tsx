@@ -50,7 +50,7 @@ export function PageHero({
           ))}
         </nav>
       ) : null}
-      <h1 className="font-heading text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+      <h1 className="heading-display font-heading text-4xl font-extrabold leading-[1.12] tracking-normal md:text-5xl lg:text-6xl">
         {title}
       </h1>
       {description ? (
