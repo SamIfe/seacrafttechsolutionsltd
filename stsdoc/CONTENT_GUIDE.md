@@ -19,7 +19,7 @@ export const company = {
   email: "info@seacrafttechsolutions.com",
   phones: ["+234 802 822 2299", "+234 802 822 2228"],
   address: "7/9 Molade Okoya Thomas Street, Off Ajose Adeogun, Victoria Island, Lagos State, Nigeria",
-  overview: "SeaCraft Technology Solutions Ltd is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector. We support oil & gas operators, EPC contractors, and marine companies with integrated services that enhance operational efficiency, asset integrity, and project delivery across offshore and onshore environments.",
+  overview: "SeaCraft Technology Solutions Ltd is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector. We support oil & gas operators, EPC contractors, and marine companies with integrated services that enhance operational efficiency, asset integrity, and project delivery across offshore and onshore environments. Backed by strong technical expertise, experienced personnel, and a commitment to safety, quality, and local content development, we deliver reliable and cost-effective solutions.",
   vision: "To be the preferred offshore technology solutions provider in Nigeria and across West Africa, recognized for excellence, innovation, and reliability.",
   mission: "To deliver tailored offshore and engineering solutions that create measurable value through safety, advanced technology, and strategic partnerships.",
   partnership: {

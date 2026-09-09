@@ -26,7 +26,7 @@ export const serviceDetailCta = {
 
 export const pageIntros = {
   about: {
-    title: "About SeaCraft",
+    title: "About Us",
     description:
       "A Nigerian indigenous subsea, ROV, marine, and offshore services company delivering technology-driven solutions to the offshore energy sector.",
   },

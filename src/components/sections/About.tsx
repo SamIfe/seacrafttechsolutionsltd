@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { company, homeSections } from "@/content/company";
+import { aboutCopy, company, homeSections } from "@/content/company";
 import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -30,14 +30,19 @@ export function About({ variant = "teaser" }: AboutProps) {
           <div className="order-1">
             <RevealOnScroll>
               <SectionHeader
-                eyebrow="About SeaCraft"
-                title="Technology-Driven Offshore Solutions"
-                description={
-                  isFull ? company.overview : homeSections.aboutTeaser
-                }
+                title={aboutCopy.title}
                 titleClassName="text-[#172168]"
-                descriptionClassName="text-[#1B1F23]"
               />
+              <div className="mt-6 max-w-3xl space-y-4">
+                {aboutCopy.paragraphs.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="text-base leading-relaxed text-[#1B1F23] md:text-lg"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </RevealOnScroll>
 
             {isFull ? (

@@ -12,19 +12,27 @@ export const company: Company = {
   address:
     "7/9 Molade Okoya Thomas Street, Off Ajose Adeogun, Victoria Island, Lagos State, Nigeria",
   overview:
-    "SeaCraft Technology Solutions Ltd is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector. We support oil & gas operators, EPC contractors, and marine companies with integrated services that enhance operational efficiency, asset integrity, and project delivery across offshore and onshore environments.",
+    "SeaCraft Technology Solutions Ltd is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector. We support oil & gas operators, EPC contractors, and marine companies with integrated services that enhance operational efficiency, asset integrity, and project delivery across offshore and onshore environments. Backed by strong technical expertise, experienced personnel, and a commitment to safety, quality, and local content development, we deliver reliable and cost-effective solutions.",
   vision:
     "To be the preferred offshore technology solutions provider in Nigeria and across West Africa, recognized for excellence, innovation, and reliability.",
   mission:
     "To deliver tailored offshore and engineering solutions that create measurable value through safety, advanced technology, and strategic partnerships.",
-  partnership: {
-    partner: "Total Marine Technology (TMT)",
-    description:
-      "SeaCraft Technology Solutions Ltd serves as a local representative of Total Marine Technology (TMT) in West Africa, supporting the execution of ROV-related operations and offshore projects.",
-    displayNote:
-      "Partnership credit - text only. TMT logo not displayed without licensed asset.",
+    partnership: {
+      partner: "Total Marine Technology (TMT)",
+      description:
+        "SeaCraft Technology Solutions Ltd serves as a local representative of Total Marine Technology (TMT) in West Africa, supporting the execution of ROV-related operations and offshore projects.",
+      displayNote: "Local Representative in West Africa",
   },
 };
+
+export const aboutCopy = {
+  title: "About Us",
+  paragraphs: [
+    "SeaCraft Technology Solutions Ltd is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector.",
+    "We support oil & gas operators, EPC contractors, and marine companies with integrated services that enhance operational efficiency, asset integrity, and project delivery across offshore and onshore environments.",
+    "Backed by strong technical expertise, experienced personnel, and a commitment to safety, quality, and local content development, we deliver reliable and cost-effective solutions.",
+  ],
+} as const;
 
 export const coreValues: CoreValue[] = [
   {
@@ -140,8 +148,6 @@ export const homeSections = {
     "Send us your project requirements and our team will respond within one business day.",
   whyChooseIntro:
     "SeaCraft combines indigenous capability with technical partnerships to support safe, efficient, and compliant project delivery.",
-  aboutTeaser:
-    "SeaCraft Technology Solutions Ltd is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector.",
   aboutImage: "/images/about/team-vessel.jpg",
   aboutImageAlt: "SeaCraft team aboard an offshore vessel",
   whyChooseImage: "/images/why-choose-us/certified-crew.jpg",

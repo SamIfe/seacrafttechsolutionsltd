@@ -9,13 +9,13 @@ export const heroSlides: HeroSlide[] = [
   {
     eyebrow: "ABOUT SEACRAFT",
     heading: "Indigenous, Innovative & Collaborative.",
-    body: "We are a Nigeria indigenous Subsea and Marine engineering company dedicated to providing quality, and leading edge innovative technological driven services",
+    body: "We are a Nigerian indigenous subsea and deepwater ROV operations company dedicated to delivering reliable, technology-driven solutions to the oil and gas sector. We combine technical expertise, experienced personnel, a commitment to safety and quality to support efficient offshore operations.",
     images: ["/images/hero/slide1a.jpg", "/images/hero/slide1b.jpg"],
   },
   {
     eyebrow: "YEARS OF EXPERIENCE",
     heading: "Growth, Adaptability & Excellence",
-    body: "Over the years, we've honed our skills, refined our processes, and built a solid foundation of trust with our clients. With each project we undertake, we leverage our extensive experience to deliver innovative solutions, ensuring the success and satisfaction of our clients.",
+    body: "We have over 10 years of experience. Over the years, we've honed our skills, refined our processes, and built a solid foundation of trust with our clients. With each project we undertake, we leverage our extensive experience to deliver innovative solutions, ensuring the success and satisfaction of our clients.",
     images: ["/images/hero/slide2a.jpg", "/images/hero/slide2b.jpg"],
   },
   {
