@@ -98,7 +98,7 @@ export function Navbar() {
           href="/"
           className="inline-flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172168] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5BF23]"
         >
-          <Logo src="/logo/header-logo.svg" height={32} />
+          <Logo src="/logo/header-logo.svg" height={32} priority />
         </Link>
 
         <nav

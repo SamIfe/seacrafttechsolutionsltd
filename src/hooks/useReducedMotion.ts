@@ -17,32 +17,26 @@ export function useReducedMotion(): boolean {
   return reducedMotion;
 }
 
-export function useIsTouchDevice(): boolean {
-  const [isTouch, setIsTouch] = useState(true);
+/**
+ * Becomes true once the browser is idle after first paint, unless the user
+ * prefers reduced motion. Gates optional motion so it never competes with LCP.
+ */
+export function useIdleMotionReady(timeout = 3000): boolean {
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(pointer: fine)");
-    const update = () => setIsTouch(!mediaQuery.matches);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    update();
-    mediaQuery.addEventListener("change", update);
-    return () => mediaQuery.removeEventListener("change", update);
-  }, []);
+    const enable = () => setReady(true);
 
-  return isTouch;
-}
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(enable, { timeout });
+      return () => window.cancelIdleCallback(id);
+    }
 
-export function useIsMobileViewport(): boolean {
-  const [isMobile, setIsMobile] = useState(true);
+    const id = setTimeout(enable, timeout - 1000);
+    return () => clearTimeout(id);
+  }, [timeout]);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
-    const update = () => setIsMobile(mediaQuery.matches);
-
-    update();
-    mediaQuery.addEventListener("change", update);
-    return () => mediaQuery.removeEventListener("change", update);
-  }, []);
-
-  return isMobile;
+  return ready;
 }

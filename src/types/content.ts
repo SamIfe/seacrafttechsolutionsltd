@@ -33,11 +33,7 @@ export type Service = {
   industriesServed: string[];
 };
 
-export type EquipmentItem = {
-  code: string;
-  name: string;
-  description: string;
-};
+export type EquipmentItem = string;
 
 export type HeroSlide = {
   eyebrow: string;
@@ -62,8 +58,17 @@ export type Leader = {
 export type Certification = {
   name: string;
   description: string;
-  logo: string;
+  logo?: string;
   footnote?: string;
+};
+
+export type Partner = {
+  name: string;
+  /** Omit until a logo file exists; the name is shown as a wordmark instead. */
+  logo?: string;
+  /** Rendered logo box in px; the image is contained within it. */
+  width: number;
+  height: number;
 };
 
 export type StatTile = {

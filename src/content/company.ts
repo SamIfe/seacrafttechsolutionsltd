@@ -70,13 +70,13 @@ export const valueProposition: string[] = [
 
 export const statTiles: StatTile[] = [
   { value: "6", label: "Core Service Lines" },
-  { value: "26+", label: "Specialized Subsea Tools in Inventory" },
+  { value: "41+", label: "Specialized Subsea Tools in Inventory" },
   {
     value: "14+",
     label: "Years of Offshore Leadership Experience",
   },
   {
-    value: "4",
+    value: "3",
     label: "Regulatory Certifications & Compliance Frameworks",
   },
 ];
@@ -113,10 +113,6 @@ export const clientProcess = [
       "Final reporting, handover, and post-operation support ensure continuity and readiness for follow-on work.",
   },
 ] as const;
-
-export const testimonialsPlaceholder = {
-  message: "Client testimonials coming soon",
-} as const;
 
 export const homeCta = {
   title: "Ready to Power Your Next Offshore Project?",

@@ -19,14 +19,6 @@ import { brandCtaClassName, cn } from "@/lib/utils";
 /** Two image cuts per text block: 3s × 2 = 6s text dwell. */
 const IMAGE_MS = 3000;
 
-/** Temporary — leave on until the stall is confirmed in console, then remove. */
-const HERO_DEBUG = true;
-
-function heroLog(event: string, extra?: Record<string, unknown>) {
-  if (!HERO_DEBUG) return;
-  console.log("[hero]", event, extra ?? "");
-}
-
 export function Hero() {
   const [imageIndex, setImageIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -39,45 +31,27 @@ export function Hero() {
   const slide = heroSlides[textIndex];
   const nextImageIndex = (imageIndex + 1) % heroImageLayers.length;
 
-  const applyPaused = (next: boolean, reason: string) => {
-    if (pausedRef.current === next) {
-      heroLog("pause-noop", { reason, paused: next });
-      return;
-    }
+  const applyPaused = (next: boolean) => {
+    if (pausedRef.current === next) return;
     pausedRef.current = next;
-    heroLog(next ? "pause" : "resume", { reason });
     setPaused(next);
   };
 
   // Image autoplay drives the clock. Text advances every second image
   // (derived from imageIndex). Functional updater avoids a stale index.
   useEffect(() => {
-    if (paused || reducedMotion || tabHidden) {
-      heroLog("timer skip-start", { paused, reducedMotion, tabHidden });
-      return;
-    }
+    if (paused || reducedMotion || tabHidden) return;
 
-    heroLog("timer start");
     const intervalId = setInterval(() => {
-      setImageIndex((current) => {
-        const next = (current + 1) % heroImageLayers.length;
-        heroLog("timer tick", { current, next });
-        return next;
-      });
+      setImageIndex((current) => (current + 1) % heroImageLayers.length);
     }, IMAGE_MS);
 
-    return () => {
-      heroLog("timer clear");
-      clearInterval(intervalId);
-    };
+    return () => clearInterval(intervalId);
   }, [paused, reducedMotion, tabHidden]);
 
   useEffect(() => {
-    const onVisibility = () => {
-      const hidden = document.visibilityState === "hidden";
-      heroLog("visibilitychange", { state: document.visibilityState });
-      setTabHidden(hidden);
-    };
+    const onVisibility = () =>
+      setTabHidden(document.visibilityState === "hidden");
 
     onVisibility();
     document.addEventListener("visibilitychange", onVisibility);
@@ -87,7 +61,7 @@ export function Hero() {
   useEffect(() => {
     const section = sectionRef.current;
     if (section?.matches(":hover")) {
-      applyPaused(true, "mount-already-hovered");
+      applyPaused(true);
     }
 
     const syncPointer = () => {
@@ -95,14 +69,12 @@ export function Hero() {
       const hovering = section.matches(":hover");
       const focusInside = section.contains(document.activeElement);
       if (!hovering && !focusInside && pausedRef.current) {
-        applyPaused(false, "pointer-no-longer-over");
+        applyPaused(false);
       }
     };
 
     window.addEventListener("scroll", syncPointer, { passive: true });
     return () => window.removeEventListener("scroll", syncPointer);
-    // Intentional: mount-only hover/scroll sync. applyPaused is stable enough via refs.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -113,16 +85,12 @@ export function Hero() {
       aria-roledescription="carousel"
       aria-label="SeaCraft highlights"
       className="relative min-h-[85vh] overflow-x-hidden bg-[#171B3B] text-white"
-      onPointerEnter={() => applyPaused(true, "pointerenter")}
-      onPointerLeave={() => applyPaused(false, "pointerleave")}
-      onFocus={() => applyPaused(true, "focus")}
+      onPointerEnter={() => applyPaused(true)}
+      onPointerLeave={() => applyPaused(false)}
+      onFocus={() => applyPaused(true)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          applyPaused(false, "blur");
-        } else {
-          heroLog("blur-still-inside", {
-            related: (event.relatedTarget as HTMLElement | null)?.tagName,
-          });
+          applyPaused(false);
         }
       }}
     >

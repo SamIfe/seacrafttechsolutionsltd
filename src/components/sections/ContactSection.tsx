@@ -1,11 +1,10 @@
-"use client";
-
 import { Mail, MapPin, Phone } from "lucide-react";
 
 import { company, homeSections } from "@/content/company";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Toaster } from "@/components/ui/sonner";
 
 type ContactSectionProps = {
   showHeader?: boolean;
@@ -110,6 +109,7 @@ export function ContactSection({ showHeader = true }: ContactSectionProps) {
           <ContactForm />
         </RevealOnScroll>
       </div>
+      <Toaster />
     </section>
   );
 }

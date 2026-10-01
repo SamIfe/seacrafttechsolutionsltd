@@ -59,6 +59,7 @@ export const footerNav = {
 export const liveSectionHrefs = [
   "/",
   "/about",
+  "/services",
   "/equipment",
   "/leadership",
   "/hseq",

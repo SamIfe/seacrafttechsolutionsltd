@@ -1,31 +1,16 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 
-import { Hero } from "@/components/sections/Hero";
 import { HomeMotionExtras } from "@/components/motion/HomeMotionExtras";
+import { About } from "@/components/sections/About";
+import { CtaBanner } from "@/components/sections/CtaBanner";
+import { Hero } from "@/components/sections/Hero";
+import { PartnerMarquee } from "@/components/sections/PartnerMarquee";
+import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { StatsStrip } from "@/components/sections/StatsStrip";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { company } from "@/content/company";
-import { certifications } from "@/content/hseq";
 import { buildBreadcrumbSchema, createPageMetadata } from "@/lib/seo";
-
-const About = dynamic(() =>
-  import("@/components/sections/About").then((mod) => mod.About),
-);
-const WhyChooseUs = dynamic(() =>
-  import("@/components/sections/WhyChooseUs").then((mod) => mod.WhyChooseUs),
-);
-const Marquee = dynamic(() =>
-  import("@/components/motion/Marquee").then((mod) => mod.Marquee),
-);
-const ProcessTimeline = dynamic(() =>
-  import("@/components/sections/ProcessTimeline").then(
-    (mod) => mod.ProcessTimeline,
-  ),
-);
-const CtaBanner = dynamic(() =>
-  import("@/components/sections/CtaBanner").then((mod) => mod.CtaBanner),
-);
 
 export const metadata: Metadata = createPageMetadata({
   title: company.tagline,
@@ -42,9 +27,9 @@ export default function HomePage() {
       <HomeMotionExtras />
       <Hero />
       <StatsStrip />
+      <PartnerMarquee />
       <About />
       <WhyChooseUs />
-      <Marquee items={certifications.map((cert) => cert.name)} />
       <ProcessTimeline />
       <CtaBanner />
     </>

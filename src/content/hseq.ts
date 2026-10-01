@@ -20,15 +20,8 @@ export const certifications: Certification[] = [
     logo: "/images/hseq/cert-ncdmb.png",
   },
   {
-    name: "NOGIC JQS",
-    description: "NOGIC Joint Qualification System registration.",
-    logo: "/images/hseq/cert-nogic-jqs.png",
-  },
-  {
-    name: "NCEC",
-    description: "Nigerian Content Equipment Certificate.",
-    logo: "/images/hseq/cert-ncdmb.png",
-    footnote: "Issued under the Nigerian Content Development & Monitoring Board",
+    name: "NEEWEBS",
+    description: "NEEWEBS registration.",
   },
 ];
 

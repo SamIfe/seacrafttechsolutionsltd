@@ -1,37 +1,16 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
+import { CheckCircle2 } from "lucide-react";
 
 import { homeSections } from "@/content/company";
 import { equipment } from "@/content/equipment";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import {
-  RevealOnScroll,
-  RevealStagger,
-  RevealStaggerItem,
-} from "@/components/motion/RevealOnScroll";
-import { Badge } from "@/components/ui/Badge";
-import { Card, CardDescription, CardTitle } from "@/components/ui/Card";
+import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-const EquipmentSwiper = dynamic(
-  () =>
-    import("@/components/sections/EquipmentSwiper").then(
-      (mod) => mod.EquipmentSwiper,
-    ),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="mt-12 h-64 animate-pulse rounded-lg bg-surface" aria-hidden />
-    ),
-  },
-);
-
-const PREVIEW_COUNT = 8;
+const PREVIEW_COUNT = 12;
 
 export function EquipmentShowcase() {
-  const reducedMotion = useReducedMotion();
   const previewItems = equipment.slice(0, PREVIEW_COUNT);
 
   return (
@@ -40,30 +19,27 @@ export function EquipmentShowcase() {
         <RevealOnScroll>
           <SectionHeader
             eyebrow="Equipment Inventory"
-            title="26 Specialized Subsea Tools"
+            title={`${equipment.length} Specialized Subsea Tools`}
             description={homeSections.equipmentIntro}
           />
         </RevealOnScroll>
 
-        {reducedMotion ? (
-          <RevealStagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <RevealOnScroll className="mt-12">
+          <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
             {previewItems.map((item) => (
-              <RevealStaggerItem key={`${item.code}-${item.name}`}>
-                <Card className="h-full">
-                  <Badge variant="outline" className="mb-3 font-mono">
-                    {item.code}
-                  </Badge>
-                  <CardTitle as="h3" className="text-base">
-                    {item.name}
-                  </CardTitle>
-                  <CardDescription>{item.description}</CardDescription>
-                </Card>
-              </RevealStaggerItem>
+              <li
+                key={item}
+                className="flex items-start gap-3 border-b border-navy/10 pb-3 font-sans text-[15px] leading-snug text-text"
+              >
+                <CheckCircle2
+                  className="mt-0.5 h-4 w-4 shrink-0 text-navy"
+                  aria-hidden
+                />
+                <span>{item}</span>
+              </li>
             ))}
-          </RevealStagger>
-        ) : (
-          <EquipmentSwiper items={previewItems} />
-        )}
+          </ul>
+        </RevealOnScroll>
 
         <RevealOnScroll className="mt-10 text-center">
           <Link

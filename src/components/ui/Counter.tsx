@@ -1,14 +1,15 @@
 "use client";
 
-import CountUp from "react-countup";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 type CounterProps = {
   value: string;
   className?: string;
+  /** Seconds to wait after entering view before counting, for staggering. */
+  delay?: number;
 };
 
 function parseStatValue(value: string): {
@@ -32,33 +33,54 @@ function parseStatValue(value: string): {
   };
 }
 
-export function Counter({ value, className }: CounterProps) {
+const DURATION_MS = 1200;
+
+// Ease-out cubic: fast start, gentle settle on the final value.
+function easeOutCubic(t: number) {
+  return 1 - (1 - t) ** 3;
+}
+
+export function Counter({ value, className, delay = 0 }: CounterProps) {
   const reducedMotion = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const [current, setCurrent] = useState(0);
+  const [done, setDone] = useState(false);
   const { end, suffix, decimals } = parseStatValue(value);
 
+  useEffect(() => {
+    if (!isInView || reducedMotion) return;
+
+    let frame = 0;
+    let start: number | undefined;
+
+    const tick = (now: number) => {
+      start ??= now + delay * 1000;
+      const progress = Math.min(Math.max((now - start) / DURATION_MS, 0), 1);
+      setCurrent(end * easeOutCubic(progress));
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick);
+      } else {
+        setDone(true);
+      }
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [isInView, reducedMotion, end, delay]);
+
   if (reducedMotion) {
-    return (
-      <span className={className}>
-        {value}
-      </span>
-    );
+    return <span className={className}>{value}</span>;
   }
 
   return (
     <span ref={ref} className={className}>
-      {isInView ? (
-        <CountUp
-          end={end}
-          duration={1.2}
-          decimals={decimals}
-          suffix={suffix}
-          useEasing
-        />
-      ) : (
-        `0${suffix}`
-      )}
+      <span className="sr-only">{value}</span>
+      <span aria-hidden>
+        {current.toFixed(decimals)}
+        {/* Suffix keeps its space while hidden so centered numbers don't shift when it appears. */}
+        <span className={done ? undefined : "invisible"}>{suffix}</span>
+      </span>
     </span>
   );
 }

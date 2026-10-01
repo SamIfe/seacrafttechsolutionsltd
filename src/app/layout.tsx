@@ -4,7 +4,6 @@ import { Inter, Manrope, Playfair_Display } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { Toaster } from "@/components/ui/sonner";
 import { company } from "@/content/company";
 import {
   absoluteUrl,
@@ -32,7 +31,7 @@ const manrope = Manrope({
 const playfair = Playfair_Display({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["700"],
   display: "swap",
 });
 
@@ -92,7 +91,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <Toaster />
       </body>
     </html>
   );

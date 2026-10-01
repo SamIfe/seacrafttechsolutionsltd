@@ -19,6 +19,8 @@ type LogoProps = {
   height?: number;
   /** Show the company name next to the logo image. */
   withText?: boolean;
+  /** Preload the image — only for the above-the-fold header logo. */
+  priority?: boolean;
 };
 
 export function Logo({
@@ -26,6 +28,7 @@ export function Logo({
   src = DEFAULT_LOGO_SRC,
   height = 36,
   withText = false,
+  priority = false,
 }: LogoProps) {
   const [imageFailed, setImageFailed] = useState(false);
 
@@ -47,7 +50,7 @@ export function Logo({
         alt={siteConfig.name}
         width={Math.round(height * 1.67)}
         height={height}
-        priority
+        priority={priority}
         className="w-auto"
         style={{ height }}
         onError={() => setImageFailed(true)}

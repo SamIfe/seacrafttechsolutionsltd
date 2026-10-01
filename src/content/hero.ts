@@ -40,7 +40,3 @@ export type HeroImageLayer = {
 export const heroImageLayers: HeroImageLayer[] = heroSlides.flatMap(
   (slide, slideIndex) => slide.images.map((src) => ({ src, slideIndex })),
 );
-
-export function firstImageIndexForSlide(slideIndex: number): number {
-  return heroImageLayers.findIndex((layer) => layer.slideIndex === slideIndex);
-}

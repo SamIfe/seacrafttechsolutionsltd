@@ -90,17 +90,26 @@ export default function HseqPage() {
             title="Regulatory & Quality Frameworks"
             {...sectionHeaderBrand}
           />
-          <ul className="mt-8 grid gap-6 sm:grid-cols-2">
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {certifications.map((cert) => (
               <li
                 key={cert.name}
                 className="rounded-lg border border-[#172168]/15 bg-white p-6 shadow-[0_8px_24px_rgba(23,33,104,0.08)]"
                 style={cardAccentStyle}
               >
-                <CertificationLogo
-                  src={cert.logo}
-                  alt={`${cert.name} certification badge`}
-                />
+                {cert.logo ? (
+                  <CertificationLogo
+                    src={cert.logo}
+                    alt={`${cert.name} certification badge`}
+                  />
+                ) : (
+                  <div
+                    className="mx-auto flex h-24 w-full max-w-[17.5rem] items-center justify-center font-heading text-3xl font-extrabold tracking-wide text-[#172168]"
+                    aria-hidden
+                  >
+                    {cert.name}
+                  </div>
+                )}
                 <h3 className="mt-4 text-center font-heading text-base font-bold text-[#172168]">
                   {cert.name}
                 </h3>
