@@ -1,7 +1,7 @@
 export const careers = {
   title: "Careers",
   intro:
-    "SeaCraft Technology Solutions Ltd is building a team of certified offshore, subsea, and marine professionals to support growing demand across Nigeria and West Africa. We seek individuals committed to safety, technical excellence, and reliable field execution.",
+    "SeaCraft Technology Solutions Ltd (STS) is building a team of certified offshore, subsea, and marine professionals to support growing demand across Nigeria and West Africa. We seek individuals committed to safety, technical excellence, and reliable field execution.",
   focusAreas: [
     "ROV operations and subsea intervention",
     "Subsea engineering and technical supervision",
@@ -10,7 +10,7 @@ export const careers = {
     "Supply chain and technical logistics",
   ],
   note:
-    "We welcome enquiries from qualified professionals interested in offshore and subsea careers. SeaCraft prioritizes Nigerian talent development and compliance with local content requirements.",
+    "We welcome enquiries from qualified professionals interested in offshore and subsea careers. STS prioritizes Nigerian talent development and compliance with local content requirements.",
   applyLabel: "Submit your enquiry",
   applyDescription:
     "Send your CV and a brief introduction to our team. We review all enquiries in confidence.",
@@ -48,7 +48,7 @@ export const pageIntros = {
   hseq: {
     title: "HSEQ & Compliance",
     description:
-      "Health, safety, environment, and quality commitments underpinning every SeaCraft operation.",
+      "Health, safety, environment, and quality commitments underpinning every STS operation.",
   },
   contact: {
     title: "Contact Us",

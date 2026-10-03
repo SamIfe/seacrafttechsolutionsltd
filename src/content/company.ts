@@ -20,7 +20,7 @@ export const company: Company = {
     partnership: {
       partner: "Total Marine Technology (TMT)",
       description:
-        "SeaCraft Technology Solutions Ltd serves as a local representative of Total Marine Technology (TMT) in West Africa, supporting the execution of ROV-related operations and offshore projects.",
+        "SeaCraft Technology Solutions Ltd (TMT) serves as a local representative of Total Marine Technology (TMT) in West Africa, supporting the execution of ROV-related operations and offshore projects.",
       displayNote: "Local Representative in West Africa",
   },
 };
@@ -28,7 +28,7 @@ export const company: Company = {
 export const aboutCopy = {
   title: "About Us",
   paragraphs: [
-    "SeaCraft Technology Solutions Ltd is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector.",
+    "SeaCraft Technology Solutions Ltd (STS) is a Nigerian indigenous subsea, ROV, marine, and offshore services company delivering high-performance, technology-driven solutions to the offshore energy sector.",
     "We support oil & gas operators, EPC contractors, and marine companies with integrated services that enhance operational efficiency, asset integrity, and project delivery across offshore and onshore environments.",
     "Backed by strong technical expertise, experienced personnel, and a commitment to safety, quality, and local content development, we deliver reliable and cost-effective solutions.",
   ],
@@ -117,7 +117,7 @@ export const clientProcess = [
 export const homeCta = {
   title: "Ready to Power Your Next Offshore Project?",
   description:
-    "Connect with SeaCraft for subsea, ROV, marine, and offshore services backed by certified personnel and specialized tooling.",
+    "Connect with STS for subsea, ROV, marine, and offshore services backed by certified personnel and specialized tooling.",
 } as const;
 
 export const homeSections = {
@@ -143,7 +143,7 @@ export const homeSections = {
   contactFormNote:
     "Send us your project requirements and our team will respond within one business day.",
   whyChooseIntro:
-    "SeaCraft combines indigenous capability with technical partnerships to support safe, efficient, and compliant project delivery.",
+    "STS combines indigenous capability with technical partnerships to support safe, efficient, and compliant project delivery.",
   aboutImage: "/images/about/team-vessel.jpg",
   aboutImageAlt: "SeaCraft team aboard an offshore vessel",
   whyChooseImage: "/images/why-choose-us/certified-crew.jpg",
