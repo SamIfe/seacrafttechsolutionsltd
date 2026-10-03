@@ -21,12 +21,8 @@ export const certifications: Certification[] = [
   },
   {
     name: "NEEWEBS",
-<<<<<<< HEAD
     description: "NEEWEBS registration.",
-=======
-    description: "NOGIC Joint Qualification System registration.",
     logo: "/images/hseq/cert-nogic-jqs.png",
->>>>>>> origin/old-pc-work
   },
 ];
 
