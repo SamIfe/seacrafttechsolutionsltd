@@ -27,7 +27,7 @@ export const heroSlides: HeroSlide[] = [
   {
     eyebrow: "SUSTAINABILITY",
     heading: "Sustainability is not just a buzzword",
-    body: "It's a core value that guides every aspect of our operations, and we are committed to minimizing our ecological footprint and promoting sustainable practices at every opportunity.",
+    body: "It's a core value that guides every aspect of our operations, and we are committed to minimizing our environmental footprint and promoting sustainable practices at every opportunity.",
     images: ["/images/hero/slide4a.jpg", "/images/hero/slide4b.jpg"],
   },
 ];
